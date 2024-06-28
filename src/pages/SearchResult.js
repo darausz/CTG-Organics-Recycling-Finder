@@ -1,11 +1,14 @@
 import OrganicsRecyclingInfo from '../components/OrganicsRecyclingInfo.js';
 import DistrictInfo from '../components/DistrictInfo.js';
 import Map from '../components/Map.js';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function SearchResult() {
+  const location = useLocation();
+  const address = location.state;
+
   return (
-    <div className='search-page'>
+    <div className='search-result-page'>
       <div className="state-infographic-container">
         <header className="state-infographic-header header">
           <h1 className="bold">
@@ -13,17 +16,17 @@ export default function SearchResult() {
           </h1>
         </header>
         <div className='state-infographic-body'>
-          <Map />
+          <Map mapType="state"/>
           <DistrictInfo />
         </div>
       </div>
       <div className='organics-recycling-info-container'>
       <button className='back-button'>
-        <Link to="/">
+        <Link to="/search">
           {"<-"}
         </Link>
       </button>
-        <OrganicsRecyclingInfo />
+        <OrganicsRecyclingInfo address={address}/>
       </div>
     </div>
   )

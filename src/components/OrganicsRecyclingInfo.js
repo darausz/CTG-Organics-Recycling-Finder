@@ -1,8 +1,8 @@
-export default function OrganicsRecyclingInfo() {
+export default function OrganicsRecyclingInfo({ address }) {
   return (
     <div className="OrganicsRecyclingInfo">
       <div className="OrganicsRecyclingInfo-Address">
-        Insert location here
+        {address}
       </div>
       <div className="OrganicsRecyclingInfo-Section">
         <h3 className="OrganicsRecyclingInfo-Heading">

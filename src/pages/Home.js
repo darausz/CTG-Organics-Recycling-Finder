@@ -17,7 +17,7 @@ export default function Home() {
             filler image
           </div>
           <div className="infographic-description">
-            Food waste is defined as <span className="font-bold">edible material</span> that is discarded, or uneaten at various stages of the food supply chain.
+            Food waste is defined as <span className="infographic-description-emphasized">edible material</span> that is discarded, or uneaten at various stages of the food supply chain.
           </div>
         </div>
         <div className="infographic-item">
@@ -25,15 +25,15 @@ export default function Home() {
             filler image
           </div>
           <div className="infographic-description">
-            FAO estimates that about <span className="font-bold">one third</span> of all food produced in the world each year is wasted.
+            FAO estimates that about <span className="infographic-description-emphasized">one third</span> of all food produced in the world each year is wasted.
           </div>
         </div>
         <div className="infographic-item">
           <div className="infographic-image-wrapper">
             filler image
           </div>
-          <div className="infograhic-description">
-            NRDC states that the number of calories wasted in the U.S. each year could ull feed about <span className="font-bold">150 million</span> people.
+          <div className="infographic-description">
+            NRDC states that the number of calories wasted in the U.S. each year could ull feed about <span className="infographic-description-emphasized">150 million</span> people.
           </div>
         </div>
       </div>

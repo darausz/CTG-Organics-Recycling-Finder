@@ -1,4 +1,4 @@
-export default function DistrictInfo() {
+export default function DistrictInfoExpanded() {
   return (
     <div className="DistrictInfo">
       <p className="DistrictInfo-Subeading">
