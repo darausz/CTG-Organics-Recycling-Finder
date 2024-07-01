@@ -22,9 +22,8 @@ module.exports = {
           key: 'id'       
         },
       },
-      pickUp:{
-        
-        type: Sequelize.ARRAY(Sequelize.STRING)
+      pickUp:{  
+        type: Sequelize.STRING
       },
       dropOff:{
         type: Sequelize.ARRAY(Sequelize.STRING)

@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     pickUp:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type:DataTypes.STRING,
     },
     dropOff:{
       type: DataTypes.ARRAY(DataTypes.STRING),
