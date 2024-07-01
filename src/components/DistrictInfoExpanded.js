@@ -1,3 +1,5 @@
+import DistrictInfoTable from "./DistrictInfoTable";
+
 export default function DistrictInfoExpanded() {
   return (
     <div className="DistrictInfo">
@@ -11,9 +13,7 @@ export default function DistrictInfoExpanded() {
         Insert law description here
       </p>
       <a>Current Recycling & Sustainability Services</a>
-      <div className="DistrictInfo-Services">
-        Insert services yes/no here
-      </div>
+      <DistrictInfoTable />
     </div>
   )
 }

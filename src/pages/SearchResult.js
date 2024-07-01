@@ -22,9 +22,7 @@ export default function SearchResult() {
       </div>
       <div className='organics-recycling-info-container'>
       <button className='back-button'>
-        <Link to="/search">
-          {"<-"}
-        </Link>
+        <Link to="/search"></Link>
       </button>
         <OrganicsRecyclingInfo address={address}/>
       </div>
