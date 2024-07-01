@@ -1,5 +1,15 @@
+import { useState } from "react";
+import DistrictInfoTable from "./DistrictInfoTable";
+
 export default function DistrictInfo() {
-  return (
+  const [expandedInfo, setExpandedInfo] = useState(false);
+  function handleClick(event) {
+    event.preventDefault();
+    setExpandedInfo(!expandedInfo);
+  }
+
+  if (!expandedInfo) {
+    return (
     <div className="DistrictInfo">
       <p className="DistrictInfo-Subeading">
         SINCE
@@ -10,11 +20,26 @@ export default function DistrictInfo() {
       <p className="DistrictInfo-Description">
         Insert law description here
       </p>
-      <a>Current Recycling & Sustainability Services</a>
-      <div className="DistrictInfo-Services">
-        Insert services yes/no here
+      <div className="DistrictInfo-Table">
+        <div>Current Recycling & Sustainability Services</div>
+        <button className={expandedInfo ?  "expand-button" : "collapse-button"} onClick={handleClick}></button>
       </div>
+      <DistrictInfoTable />
     </div>
-  )
+    ) 
+  }
+  else {
+    return(
+      <div className="DistrictInfo">
+        <div className="DistrictInfo-Table">
+        <div>Current Recycling & Sustainability Services</div>
+        <button className={expandedInfo ?  "expand-button" : "collapse-button"} onClick={handleClick}></button>
+      </div>
+      <DistrictInfoTable />
+      Insert services info below      
+      </div>
+    )
+  }
+  
 }
 
