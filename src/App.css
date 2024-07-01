@@ -6,6 +6,7 @@
   src: url("../public/BryantPro-Medium.woff") format("woff");
 }
 
+
 body {
   background-color: #292a3c;
   color:white;
@@ -165,8 +166,21 @@ body {
   gap: 4rem;
 }
 
+.organics-recycling-info-container {
+  width: 30%;
+}
+
 .back-button {
+  background-image: url("./assets/backIcon.png");
+  background-size: 1.3rem 1.3rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  filter: invert(100%);
   margin-top: 4rem;
+  width:3rem;
+  height:3rem;
+  border: 1px solid black;
+  border-radius: 2rem;
 }
 
 /* Map */
@@ -203,12 +217,46 @@ body {
   flex-grow: 1;
 }
 
+.DistrictInfo-Table {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* DistrictInfoTable */ 
+
+.DistrictInfo-Services {
+  background-color: white;
+  color:black;
+  font-size: 1rem;
+}
+
+td {
+  border: 1px solid black;
+  padding: 0.2rem 1rem;
+}
+
+.yes-service-icon {
+  background-image: url(./assets/yesServiceIcon.png);
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 3rem;
+}
+
+.no-service-icon {
+  background-image: url(./assets/noServiceIcon.png);
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 3rem;
+}
+
 /* OrganicsRecyclingInfo */
 
 .OrganicsRecyclingInfo {
   display:flex;
   flex-direction: column;
-  margin-top:3rem;
+  margin-top:2rem;
 }
 
 .OrganicsRecyclingInfo-Address {
@@ -222,6 +270,38 @@ body {
   border-bottom: 1px solid rgba(255,255,255,.25);
 }
 
-.OrganicsRecyclingInfo-Heading {
-  font-size: 1.8rem;
+.OrganicsRecyclingInfo-Dropdown {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.OrganicsRecyclingInfo-Icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: invert(100%);
+  margin-right: 0.5rem;
+}
+
+.OrganicsRecyclingInfo-Header {
+  font-size: 1.7rem;
+  flex-grow: 1;
+}
+
+.expand-button {
+  background-image: url(./assets/downArrowIcon.png);
+  background-size: contain;
+  width:15px;
+  height:15px;
+}
+
+.collapse-button {
+  background-image: url(./assets/upArrowIcon.png);
+  background-size: contain;
+  width:15px;
+  height:15px;
+}
+
+.OrganicsRecyclingInfo-Description {
+  color:lightgray;
 }
