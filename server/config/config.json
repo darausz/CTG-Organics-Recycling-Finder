@@ -4,6 +4,7 @@
     "password": "Mariana10!",
     "database": "CommitToGreen",
     "host": "127.0.0.1",
+     "port":"5432",
     "dialect": "postgres"
   },
   "test": {
