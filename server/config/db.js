@@ -1,17 +1,15 @@
 const { Sequelize } = require('sequelize');
 const config = require('./config'); // Adjust the path as needed
 
-const env = process.env.NODE_ENV || 'development';
-const sequelizeConfig = config[env];
+module.exports= new Sequelize('CommitToGreen','postgres','Mariana10!',{
+    host:'localhost',
+    dialect:'postgres',
+    operatorsAliases:false,
+    pool: {
+        max: 5,
+        min:0,
+        acquire: 30000,
+        idle: 10000
+    },
 
-const sequelize = new Sequelize(
-  sequelizeConfig.database,
-  sequelizeConfig.username,
-  sequelizeConfig.password,
-  {
-    host: sequelizeConfig.host,
-    dialect: sequelizeConfig.dialect,
-  }
-);
-
-module.exports = sequelize;
+});
