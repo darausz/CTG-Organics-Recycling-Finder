@@ -21,8 +21,8 @@ export default function SearchResult() {
         </div>
       </div>
       <div className='organics-recycling-info-container'>
-      <button className='back-button'>
-        <Link to="/search"></Link>
+      <button>
+        <Link className='back-button' to="/search"></Link>
       </button>
         <OrganicsRecyclingInfo address={address}/>
       </div>

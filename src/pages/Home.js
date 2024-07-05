@@ -8,7 +8,9 @@ export default function Home() {
           U.S. ORGANICS RECYCLING FINDER
         </h1>
         <p className="home-page-header-description">
-          We offer a platform where we enhance food waste reduction through an easy to search, user friendly online solutions hub.
+          We offer a platform where we enhance food waste reduction through an easy to search, user friendly online solutions hub. Start your organics recycling journey now.
+          This tool helps you explore legislative and regulatory policies on the state and local level.
+          Explore color-coded maps to compare policies in different states.
         </p>
       </header>
       <div className="infographic-container">
