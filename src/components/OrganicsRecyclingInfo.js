@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import OrganicsRecyclingInfoDropdown from "./OrganicsRecyclingInfoDropdown";
 import guideIcon from "../assets/guideIcon.png";
 import solutionIcon from "../assets/solutionIcon.png";
 import facilityIcon from "../assets/facilityIcon.png";
@@ -42,9 +43,15 @@ export default function OrganicsRecyclingInfo({ address }) {
           {shownItem == "guide" ? "shown text" : ""}
         </div>
       </div>
+      {/* <OrganicsRecyclingInfoDropdown
+        name={"solution"}
+        heading={"Find a Composting Solution Near You"}
+        expand={expand}
+        shownItem={shownItem}
+        /> */}
       <div className="OrganicsRecyclingInfo-Section">
         <div className="OrganicsRecyclingInfo-Dropdown">
-        <img className="OrganicsRecyclingInfo-Icon" src={solutionIcon}></img>
+          <img className="OrganicsRecyclingInfo-Icon" src={solutionIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
             Find a Composting Solution Near You
           </h3>
@@ -57,7 +64,7 @@ export default function OrganicsRecyclingInfo({ address }) {
       </div>
       <div className="OrganicsRecyclingInfo-Section">
         <div className="OrganicsRecyclingInfo-Dropdown">
-        <img className="OrganicsRecyclingInfo-Icon" src={facilityIcon}></img>
+          <img className="OrganicsRecyclingInfo-Icon" src={facilityIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
             Organic Waste Facility Location
           </h3>
@@ -70,7 +77,7 @@ export default function OrganicsRecyclingInfo({ address }) {
       </div>
       <div className="OrganicsRecyclingInfo-Section">
         <div className="OrganicsRecyclingInfo-Dropdown">
-        <img className="OrganicsRecyclingInfo-Icon" src={faqIcon}></img>
+          <img className="OrganicsRecyclingInfo-Icon" src={faqIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
             Common FAQs
           </h3>
@@ -83,7 +90,7 @@ export default function OrganicsRecyclingInfo({ address }) {
       </div>
       <div className="OrganicsRecyclingInfo-Section">
         <div className="OrganicsRecyclingInfo-Dropdown">
-        <img className="OrganicsRecyclingInfo-Icon" src={helpIcon}></img>
+          <img className="OrganicsRecyclingInfo-Icon" src={helpIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
             Need more help?
           </h3>
