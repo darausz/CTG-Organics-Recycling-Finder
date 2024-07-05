@@ -51,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     tableName: 'counties',
     modelName: 'County',
+    timestamps:false
   });
 
   return County;
