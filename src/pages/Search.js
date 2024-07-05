@@ -2,6 +2,7 @@ import Map from '../components/Map.js';
 import { useState} from 'react';
 import { Link } from 'react-router-dom';
 
+
 export default function Search() {
   const [address, setAddress] = useState("");
 
@@ -13,9 +14,9 @@ export default function Search() {
             ORGANICS RECYCLING FINDER
           </h1>
         </header>
-        <div>
+
           <Map mapType="country" />
-        </div>
+
       </div>
       <div className='search-container'>
         <div className="search-header">
