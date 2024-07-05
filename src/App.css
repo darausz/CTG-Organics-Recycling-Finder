@@ -22,6 +22,11 @@ body {
   padding-bottom: 1rem;
 }
 
+/* Leaflet */
+
+.leaflet-container {
+  height: 100%;
+}
 /* Home */
 
 .home-page {
@@ -171,6 +176,7 @@ body {
 }
 
 .back-button {
+  display: block;
   background-image: url("./assets/backIcon.png");
   background-size: 1.3rem 1.3rem;
   background-repeat: no-repeat;
