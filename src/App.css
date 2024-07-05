@@ -199,9 +199,12 @@ body {
 
 .Map-Country {
   height: 40rem;
-  background-color: #606073;
   margin: 4rem;
   margin-left: 8rem;
+}
+
+.DC2 {
+  display: none;
 }
 
 /* DistrictInfo */
