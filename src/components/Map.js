@@ -45,4 +45,3 @@ export default function Map({ mapType }) {
     </div>
   )
 }
-
