@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import { useState} from 'react';
 import MapController from './MapController';
+import USStates from './USStates';
 
 export default function Map({ mapType }) {
   const [center, setCenter] = useState([40.7, -74]);
@@ -24,27 +25,10 @@ export default function Map({ mapType }) {
     [coord[0], coord[1]] = [coord[1], coord[0]];
   })
 
-  // fake marker for pillar
-  function USOnly() {
-    const map = useMap();
-    map.fitBounds([
-      [40, -167.276413], //Southwest
-      [63.162102, -72.733040]  //Northeast
-  ])
-  map.setZoom(3);
-    return null;
-  }
-
   if (mapType == "country") {
     return (
       <div className="Map-Country">
-        <MapContainer center={[40.7, -94]} zoom={4} zoomSnap={.25} scrollWheelZoom={false}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <USOnly />
-        </MapContainer>
+        <USStates />
       </div>
     )
   }
