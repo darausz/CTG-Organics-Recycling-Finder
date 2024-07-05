@@ -1,6 +1,7 @@
 {
   "name": "ctg-organics-recycling-finder",
   "version": "0.1.0",
+  "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
     "@react-leaflet/core": "^2.1.0",
