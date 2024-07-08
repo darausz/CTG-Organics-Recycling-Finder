@@ -1,55 +1,45 @@
-<<<<<<< HEAD
 import { useState,useEffect } from "react";
-=======
-import { useState } from "react";
->>>>>>> 4bd0f6ef778ffba1b562ae7ebbae7fd8fc69c162
 // import OrganicsRecyclingInfoDropdown from "./OrganicsRecyclingInfoDropdown";
 import guideIcon from "../assets/guideIcon.png";
 import solutionIcon from "../assets/solutionIcon.png";
 import facilityIcon from "../assets/facilityIcon.png";
 import faqIcon from "../assets/faqIcon.png";
 import helpIcon from "../assets/helpIcon.png";
-<<<<<<< HEAD
-import axios from 'axios';
-import { useCountyContext } from "./countyProvider";
-const zipToCountyId = {
-  "10458": 4,
+// import axios from 'axios';
+// import { useCountyContext } from "./countyProvider";
+// const zipToCountyId = {
+//   "10458": 4,
  
-};
+// };
 
 export default function OrganicsRecyclingInfo({ address }) {
   const [shownItem, setShownItem] = useState("");
   const {singleCounty,setSingleCounty}= useCountyContext();
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchCountyData = async () => {
-      const countyId = zipToCountyId[String(address)];
-      console.log("hiii");
-      console.log(countyId);
-      if (countyId) {
-        try {
+  // useEffect(() => {
+  //   const fetchCountyData = async () => {
+  //     const countyId = zipToCountyId[String(address)];
+  //     console.log("hiii");
+  //     console.log(countyId);
+  //     if (countyId) {
+  //       try {
           
-          const {response}= await axios.get(`http://localhost:5000/county/${countyId}`);
-          console.log(response);
-          setSingleCounty(response);
-        } catch (error) {
-          setError('Error fetching data');
-          console.log(error);
-        }
-      } else {
-        setError('Invalid address');
-      }
-    };
+  //         const {response}= await axios.get(`http://localhost:5000/county/${countyId}`);
+  //         console.log(response);
+  //         setSingleCounty(response);
+  //       } catch (error) {
+  //         setError('Error fetching data');
+  //         console.log(error);
+  //       }
+  //     } else {
+  //       setError('Invalid address');
+  //     }
+  //   };
 
-    fetchCountyData();
-  }, [address,setSingleCounty]);
+  //   fetchCountyData();
+  // }, [address,setSingleCounty]);
 
-=======
-
-export default function OrganicsRecyclingInfo({ address }) {
-  const [shownItem, setShownItem] = useState("");
->>>>>>> 4bd0f6ef778ffba1b562ae7ebbae7fd8fc69c162
   function expand(event) {
     if (shownItem == event.target.name) {
       setShownItem("");
@@ -98,10 +88,7 @@ export default function OrganicsRecyclingInfo({ address }) {
           <h3 className="OrganicsRecyclingInfo-Header">
             Find a Composting Solution Near You
           </h3>
-<<<<<<< HEAD
           
-=======
->>>>>>> 4bd0f6ef778ffba1b562ae7ebbae7fd8fc69c162
           <button name="solution" className={shownItem === "solution" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
         </div>

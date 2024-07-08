@@ -8,10 +8,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
     "axios": "^1.7.2",
-=======
->>>>>>> 4bd0f6ef778ffba1b562ae7ebbae7fd8fc69c162
     "express": "^4.19.2",
     "leaflet": "^1.9.4",
     "pg": "^8.12.0",
