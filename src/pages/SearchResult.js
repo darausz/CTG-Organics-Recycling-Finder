@@ -2,10 +2,13 @@ import OrganicsRecyclingInfo from '../components/OrganicsRecyclingInfo.js';
 import DistrictInfo from '../components/DistrictInfo.js';
 import Map from '../components/Map.js';
 import { Link, useLocation } from "react-router-dom";
+import { useCountyContext } from "../components/countyProvider.js";
+
 
 export default function SearchResult() {
+  const {address} = useCountyContext();
   const location = useLocation();
-  const address = location.state;
+ // const address = location.state;
 
   return (
     <div className='search-result-page'>
