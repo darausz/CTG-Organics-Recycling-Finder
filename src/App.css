@@ -6,7 +6,6 @@
   src: url("../public/BryantPro-Medium.woff") format("woff");
 }
 
-
 body {
   background-color: #292a3c;
   color:white;
@@ -93,6 +92,10 @@ body {
 .country-container {
   width:60%;
   height: 50rem;
+}
+
+.DC2 {
+  display:none;
 }
 
 .search-container {
@@ -199,10 +202,10 @@ body {
 
 .Map-Country {
   height: 40rem;
-  background-color: #606073;
   margin: 4rem;
   margin-left: 8rem;
 }
+
 
 /* DistrictInfo */
 

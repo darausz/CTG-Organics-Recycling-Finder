@@ -1,15 +1,15 @@
 import Map from '../components/Map.js';
-import { useState} from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCountyContext } from "../components/countyProvider.js";
 
 
 
 export default function Search() {
-
- const {setAddress} = useCountyContext();
-  const handleClick= () => {
-    console.log('Hello Ninjas');
+  const [input, setInput] = useState("");
+  const { setAddress } = useCountyContext();
+  const handleClick = () => {
+    setAddress(input);
   }
 
   return (
@@ -21,7 +21,7 @@ export default function Search() {
           </h1>
         </header>
 
-          <Map mapType="country" />
+        <Map mapType="country" />
 
       </div>
       <div className='search-container'>
@@ -37,9 +37,9 @@ export default function Search() {
           <h4 className='search-address-heading'>
             Address (Required)
           </h4>
-          <input className="search-address-field" type="text" value={address} onChange={e => setAddress(e.target.value)}></input>
+          <input className="search-address-field" type="text" value={input} onChange={e => setInput(e.target.value)}></input>
           <button className='search-button'>
-            <Link to="/search/result">
+            <Link to="/search/result" onClick={handleClick}>
               Search
             </Link>
           </button>
