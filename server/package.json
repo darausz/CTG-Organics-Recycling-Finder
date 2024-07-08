@@ -1,7 +1,10 @@
 {
   "name": "server",
   "version": "1.0.0",
+<<<<<<< HEAD
   "proxy": "http://localhost:5000",
+=======
+>>>>>>> 4bd0f6ef778ffba1b562ae7ebbae7fd8fc69c162
   "description": "",
   "main": "index.js",
   "scripts": {
