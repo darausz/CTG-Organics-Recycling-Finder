@@ -4,13 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CountyProvider } from './components/countyProvider';
+import { CityProvider } from './components/cityProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <CountyProvider>
+      <CityProvider>
     <App />
+    </CityProvider>
     </CountyProvider>
+    
   </React.StrictMode>
 );
 

@@ -6,10 +6,10 @@ import { useCountyContext } from "../components/countyProvider.js";
 
 
 export default function Search() {
-
- const {setAddress} = useCountyContext();
-  const handleClick= () => {
-    console.log('Hello Ninjas');
+  const [input, setInput] = useState("");
+  const { setAddress } = useCountyContext();
+  const handleClick = () => {
+    setAddress(input);
   }
 
   return (
@@ -39,7 +39,7 @@ export default function Search() {
           </h4>
           <input className="search-address-field" type="text" value={input} onChange={e => setInput(e.target.value)}></input>
           <button className='search-button'>
-            <Link to="/search/result">
+            <Link to="/search/result" onClick={handleClick}>
               Search
             </Link>
           </button>

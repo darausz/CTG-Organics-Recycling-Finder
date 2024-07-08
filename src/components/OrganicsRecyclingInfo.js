@@ -7,6 +7,7 @@ import faqIcon from "../assets/faqIcon.png";
 import helpIcon from "../assets/helpIcon.png";
 import axios from 'axios';
 import { useCountyContext } from "./countyProvider";
+import { CountyProvider } from "./countyProvider";
 const zipToCountyId = {
   "10458": 4,
  
@@ -14,30 +15,12 @@ const zipToCountyId = {
 
 export default function OrganicsRecyclingInfo({ address }) {
   const [shownItem, setShownItem] = useState("");
-  const {singleCounty,setSingleCounty}= useCountyContext();
+  const {singleCounty}= useCountyContext();
+  const{dropOffLocations}=useCountyContext();
+  const {microHaulers}= useCountyContext();
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchCountyData = async () => {
-      const countyId = zipToCountyId[String(address)];
-      console.log("hiii");
-      console.log(countyId);
-      if (countyId) {
-        try {
-          const {data} = await axios.get(`http://localhost:5000/county/${countyId}`);
-          console.log(data);
-          setSingleCounty(data);
-        } catch (error) {
-          setError('Error fetching data');
-          console.log(error);
-        }
-      } else {
-        setError('Invalid address');
-      }
-    };
 
-    fetchCountyData();
-  }, [address,setSingleCounty]);
 
   function expand(event) {
     if (shownItem == event.target.name) {
@@ -85,27 +68,38 @@ export default function OrganicsRecyclingInfo({ address }) {
         <div className="OrganicsRecyclingInfo-Dropdown">
           <img className="OrganicsRecyclingInfo-Icon" src={solutionIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
-            Find a Composting Solution Near You
+            Find a Composting Solution Near You : DropOff
           </h3>
+        
           
           <button name="solution" className={shownItem === "solution" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
         </div>
         <div className="OrganicsRecyclingInfo-Description">
-          {shownItem == "solution" ? "shown text" : ""}
+           {shownItem == "solution" ? "shown text" : ""} 
+          <ul>
+          {dropOffLocations.map((location, index) => (
+            <li key={index} style={{ marginBottom: '10px' }}>{location}</li>
+          ))}
+        </ul>
         </div>
       </div>
       <div className="OrganicsRecyclingInfo-Section">
         <div className="OrganicsRecyclingInfo-Dropdown">
           <img className="OrganicsRecyclingInfo-Icon" src={facilityIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
-            Organic Waste Facility Location
+            Organic Waste Facility Location: MicroHaulers
           </h3>
           <button name="facility" className={shownItem === "facility" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
         </div>
         <div className="OrganicsRecyclingInfo-Description">
-          {shownItem == "facility" ? "shown text" : ""}
+          {shownItem == "facility" ? "shown text" : ""} 
+          <ul>
+          {microHaulers.map((location, index) => (
+            <li key={index} style={{ marginBottom: '10px' }}>{location}</li>
+          ))}
+        </ul>
         </div>
       </div>
       <div className="OrganicsRecyclingInfo-Section">
