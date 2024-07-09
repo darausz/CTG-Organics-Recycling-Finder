@@ -11,6 +11,8 @@ const cors = require('cors')
 const stateRouter=require('./routes/stateroute')
 const cityRouter= require('./routes/cityroute.js')
 const countyRouter= require('./routes/countyroute.js')
+const dropOffRouter=require('./routes/dropoffroute.js')
+const microhaulerRouter= require('./routes/microhaulerroute.js')
 const db= require('./config/db.js');
 //test DBB
 db.authenticate()
@@ -31,5 +33,7 @@ app.get("/",(req,res)=>{
 app.use('/state',stateRouter)
 app.use('/city',cityRouter)
 app.use('/county',countyRouter)
+app.use('/dropOff',dropOffRouter)
+app.use('/microHauler',microhaulerRouter)
 const PORT= process.env.PORT || 5000;
 app.listen(PORT, 5000,()=> {console.log("server started on port 5000")})

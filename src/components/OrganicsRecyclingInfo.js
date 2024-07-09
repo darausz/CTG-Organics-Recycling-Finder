@@ -5,11 +5,21 @@ import solutionIcon from "../assets/solutionIcon.png";
 import facilityIcon from "../assets/facilityIcon.png";
 import faqIcon from "../assets/faqIcon.png";
 import helpIcon from "../assets/helpIcon.png";
+import axios from 'axios';
 import { useCountyContext } from "./countyProvider";
+import { CountyProvider } from "./countyProvider";
+const zipToCountyId = {
+  "10458": 4,
+ 
+};
 
 export default function OrganicsRecyclingInfo({ address }) {
   const [shownItem, setShownItem] = useState("");
-  const { singleCounty }= useCountyContext();
+  const {singleCounty}= useCountyContext();
+ 
+  const [error, setError] = useState(null);
+
+
 
   function expand(event) {
     if (shownItem == event.target.name) {
@@ -57,27 +67,30 @@ export default function OrganicsRecyclingInfo({ address }) {
         <div className="OrganicsRecyclingInfo-Dropdown">
           <img className="OrganicsRecyclingInfo-Icon" src={solutionIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
-            Find a Composting Solution Near You
+            Find a Composting Solution Near You : DropOff
           </h3>
+        
           
           <button name="solution" className={shownItem === "solution" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
         </div>
         <div className="OrganicsRecyclingInfo-Description">
-          {shownItem == "solution" ? "shown text" : ""}
+           {shownItem == "solution" ? "shown text" : ""} 
+        
         </div>
       </div>
       <div className="OrganicsRecyclingInfo-Section">
         <div className="OrganicsRecyclingInfo-Dropdown">
           <img className="OrganicsRecyclingInfo-Icon" src={facilityIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
-            Organic Waste Facility Location
+            Organic Waste Facility Location: MicroHaulers
           </h3>
           <button name="facility" className={shownItem === "facility" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
         </div>
         <div className="OrganicsRecyclingInfo-Description">
-          {shownItem == "facility" ? "shown text" : ""}
+          {shownItem == "facility" ? "shown text" : ""} 
+        
         </div>
       </div>
       <div className="OrganicsRecyclingInfo-Section">
@@ -121,4 +134,3 @@ export default function OrganicsRecyclingInfo({ address }) {
     </div>
   )
 }
-

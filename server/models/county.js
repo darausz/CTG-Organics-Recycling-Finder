@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // Define associations here
       this.belongsTo(models.City,{foreignKey:'cityId'})
+      this.hasMany(models.DropOff,{foreignKey: 'countyId'})
+      this.hasMany(models.MicroHauler,{foreignKey: 'countyId'})
+      this.hasMany(models.SmartBin,{foreignKey: 'countyId'})
     }
   }
 
@@ -30,15 +33,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     pickUp:{
       type:DataTypes.STRING,
-    },
-    dropOff:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
-    microhauler:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
-    smartbins:{
-     type: DataTypes.ARRAY(DataTypes.STRING),
     },
     comLaw:{
         type: DataTypes.BOOLEAN
