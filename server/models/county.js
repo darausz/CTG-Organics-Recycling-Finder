@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // Define associations here
       this.belongsTo(models.City,{foreignKey:'cityId'})
+      this.hasMany(models.DropOff,{foreignKey: 'countyId'})
+      this.hasMany(models.MicroHauler,{foreignKey: 'countyId'})
+      this.hasMany(models.SmartBin,{foreignKey: 'countyId'})
     }
   }
 
