@@ -31,15 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     pickUp:{
       type:DataTypes.STRING,
     },
-    dropOff:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
-    microhauler:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
-    smartbins:{
-     type: DataTypes.ARRAY(DataTypes.STRING),
-    },
     comLaw:{
         type: DataTypes.BOOLEAN
     },
