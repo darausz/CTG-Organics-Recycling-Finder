@@ -12,6 +12,6 @@ export const dropOffIcon = new Icon({
 export const locationIcon = new Icon({
   iconUrl: locationMarker,
   iconAnchor: [10, 50],
-  popupAnchor: [0, -20],
+  popupAnchor: [10, -40],
   iconSize: [40, 50],
 })
