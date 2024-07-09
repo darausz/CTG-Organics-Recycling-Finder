@@ -16,8 +16,7 @@ const zipToCountyId = {
 export default function OrganicsRecyclingInfo({ address }) {
   const [shownItem, setShownItem] = useState("");
   const {singleCounty}= useCountyContext();
-  const{dropOffLocations}=useCountyContext();
-  const {microHaulers}= useCountyContext();
+ 
   const [error, setError] = useState(null);
 
 
@@ -77,11 +76,7 @@ export default function OrganicsRecyclingInfo({ address }) {
         </div>
         <div className="OrganicsRecyclingInfo-Description">
            {shownItem == "solution" ? "shown text" : ""} 
-          <ul>
-          {dropOffLocations.map((location, index) => (
-            <li key={index} style={{ marginBottom: '10px' }}>{location}</li>
-          ))}
-        </ul>
+        
         </div>
       </div>
       <div className="OrganicsRecyclingInfo-Section">
@@ -95,11 +90,7 @@ export default function OrganicsRecyclingInfo({ address }) {
         </div>
         <div className="OrganicsRecyclingInfo-Description">
           {shownItem == "facility" ? "shown text" : ""} 
-          <ul>
-          {microHaulers.map((location, index) => (
-            <li key={index} style={{ marginBottom: '10px' }}>{location}</li>
-          ))}
-        </ul>
+        
         </div>
       </div>
       <div className="OrganicsRecyclingInfo-Section">

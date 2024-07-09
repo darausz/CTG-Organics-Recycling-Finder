@@ -5,14 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CountyProvider } from './components/countyProvider';
 import { CityProvider } from './components/cityProvider';
+import { DropoffProvider } from './components/dropOffProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <CountyProvider>
+      <DropoffProvider>
       <CityProvider>
     <App />
     </CityProvider>
+    </DropoffProvider>
     </CountyProvider>
     
   </React.StrictMode>

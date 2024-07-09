@@ -15,9 +15,8 @@ const zipToCountyId = {
 export default function SearchResult() {
   const {address} = useCountyContext();
   const {singleCounty,setSingleCounty}=useCountyContext();
-  const {setDropOffLocations}=useCountyContext();
   const { singleCity, setSingleCity } = useCityContext();
-  const{setMicroHauler}= useCountyContext();
+
   const location = useLocation();
  // const address = location.state;
  const [error, setError] = useState(null);
@@ -32,8 +31,7 @@ export default function SearchResult() {
          const {data} = await axios.get(`http://localhost:5000/county/${countyId}`);
          console.log(data);
          setSingleCounty(data);
-         filterDropOffLocations(data);
-         filterMicroHaulers(data);
+       
        } catch (error) {
          setError('Error fetching data');
          console.log(error);
@@ -64,12 +62,7 @@ export default function SearchResult() {
 
 
     
- const filterDropOffLocations = (countyData) => {
-  if (countyData && countyData.dropOff) {
-    const cleanedDropOffLocations = countyData.dropOff.map(location => location.replace(/,/g, ''));
-    setDropOffLocations(cleanedDropOffLocations);
-  }
-};
+
 /* const filterDropOffLocations2 = (countyData) => {
   if (countyData && countyData.dropOff) {
     const dropOffObjects = countyData.dropOff.map(location => {
@@ -88,11 +81,7 @@ export default function SearchResult() {
   }
 };
  */
-const filterMicroHaulers=(countyData) =>{
-  if(countyData && countyData.microhauler){
-    setMicroHauler(countyData.microhauler);
-  }
-};
+
 
   return (
     <div className='search-result-page'>
