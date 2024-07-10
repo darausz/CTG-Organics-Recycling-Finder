@@ -17,7 +17,7 @@ const zipToCountyId = {
 
 export default function OrganicsRecyclingInfo({ address }) {
   const [shownItem, setShownItem] = useState("");
-  const {singleCounty}= useCountyContext();
+  const {singleCounty,setSingleCounty}= useCountyContext();
   const {dropOffs}= useDropOffContext();
   const {microHaulers}= useMicroHaulerContext(); 
  
