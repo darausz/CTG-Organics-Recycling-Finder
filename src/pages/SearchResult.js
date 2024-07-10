@@ -27,7 +27,7 @@ export default function SearchResult() {
   // const location = useLocation();
   // const address = location.state;
   const [error, setError] = useState(null);
-
+  const countyId = zipToCountyId[String(address)];
   useEffect(() => {
     const fetchCoordinates = async () => {
       if (address) {
@@ -52,7 +52,7 @@ export default function SearchResult() {
   
   useEffect(() => {
     const fetchCountyData = async () => {
-      const countyId = zipToCountyId[String(address)];
+      
       if (countyId) {
         try {
           const { data } = await axios.get(`http://localhost:5000/county/${countyId}`);
