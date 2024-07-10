@@ -23,7 +23,27 @@ export default function OrganicsRecyclingInfo({ address }) {
  
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchCountyData = async () => {
+      const countyId = zipToCountyId[String(address)];
+      console.log("hiii");
+      console.log(countyId);
+      if (countyId) {
+        try {
+          const {data} = await axios.get(`http://localhost:5000/county/${countyId}`);
+          console.log(data);
+          setSingleCounty(data);
+        } catch (error) {
+          setError('Error fetching data');
+          console.log(error);
+        }
+      } else {
+        setError('Invalid address');
+      }
+    };
 
+    fetchCountyData();
+  }, [address,setSingleCounty]);
 
   function expand(event) {
     if (shownItem == event.target.name) {
@@ -73,15 +93,6 @@ export default function OrganicsRecyclingInfo({ address }) {
           <h3 className="OrganicsRecyclingInfo-Header">
             Find a Composting Solution Near You : DropOff
           </h3>
-          
-          <ul>
-           {dropOffs.map((dropOffss) => (
-                <p key={dropOffss.id}>
-                {dropOffss.name}, {dropOffss.address}
-               </p>
-                 ))}
-          </ul>
-
           
           <button name="solution" className={shownItem === "solution" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
