@@ -6,6 +6,10 @@ import { Link, useLocation } from "react-router-dom";
 import axios from 'axios';
 import { useCountyContext } from "../components/countyProvider.js";
 import { useCityContext } from '../components/cityProvider.js';
+import { useDropOffContext } from '../components/dropOffProvider.js';
+import { useMicroHaulerContext } from '../components/microHaulerProvider.js';
+import { useSmartBinContext } from '../components/smartBinsProvider.js';
+
 const zipToCountyId = {
   "10458": 4,
 };
@@ -14,6 +18,11 @@ const zipToCountyId = {
 export default function SearchResult() {
   const { address, singleCounty, setSingleCounty, setCoordinates } = useCountyContext();
   const { singleCity, setSingleCity } = useCityContext();
+  const {setDropOffs} = useDropOffContext();
+  const {setMicroHaulers}= useMicroHaulerContext();
+  const {setSmartBins}= useSmartBinContext();
+  
+  
 
   // const location = useLocation();
   // const address = location.state;
@@ -58,22 +67,70 @@ export default function SearchResult() {
       }
     };
 
-    fetchCountyData();
-  }, [address, setSingleCounty]);
+   fetchCountyData();
+ }, [address,countyId,setSingleCounty]);
 
-  useEffect(() => {
-    const fetchCityData = async () => {
-      if (singleCounty.cityId) {
-        try {
-          const { data } = await axios.get(`http://localhost:5000/city/${singleCounty.cityId}`);
-          setSingleCity(data);
-          console.log(singleCity)
-        } catch (error) {
-          setError('Error fetching city data');
-          console.log(error);
-        }
+ useEffect(()=> {
+  const fetchdropOffbyId = async () =>{
+    console.log('in fetchdropOffbyId', countyId);
+    if (countyId){
+      try{
+        const {data} = await axios.get(`http://localhost:5000/dropOff/county/${countyId}`);
+        console.log('in fetchdropOffbyId data ', data);
+        setDropOffs(data);
+      }catch(err){
+        setError('Error fetching data');
+         console.log(error);
       }
-    };
+    }else{
+      setError('invalid address');
+    }
+  };
+  fetchdropOffbyId();
+ }, [countyId,setDropOffs])
+
+ useEffect(()=> {
+  const fetchMicroHaulersbyId =async ()=>{
+    console.log('inside  fetchMicroHaulersbyId ');
+    if(countyId){
+      console.log('fetchMicroHaulersbyId  countyId ',countyId);
+      try{
+        const {data}= await axios.get(`http://localhost:5000/microHauler/county/${countyId}`);
+        console.log('in fetchdropOffbyId data ', data);
+        setMicroHaulers(data);
+      }catch(err){
+        setError('Error fetching MicroHauler countyId data');
+
+      }
+    }else{
+      setError('iinvalid countyId');
+    }
+  };
+  fetchMicroHaulersbyId();
+ },[countyId,setMicroHaulers])
+/* 
+ useEffect(()=>{
+  const fetchSmartBinsbyId= async ()=>{
+    if(countyId){
+      try{
+
+      }
+    }
+  }
+ })
+ */
+ useEffect(() => {
+  const fetchCityData = async () => {
+    if (singleCounty.cityId) {
+      try {
+        const { data } = await axios.get(`http://localhost:5000/city/${singleCounty.cityId}`);
+        setSingleCity(data);
+      } catch (error) {
+        setError('Error fetching city data');
+        console.log(error);
+      }
+    }
+  };
 
     fetchCityData();
   }, [singleCounty, setSingleCity]);

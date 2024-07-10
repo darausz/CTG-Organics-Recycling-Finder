@@ -7,6 +7,9 @@ import faqIcon from "../assets/faqIcon.png";
 import helpIcon from "../assets/helpIcon.png";
 import axios from 'axios';
 import { useCountyContext } from "./countyProvider";
+import { CountyProvider } from "./countyProvider";
+import { useDropOffContext } from "./dropOffProvider";
+import { useMicroHaulerContext } from "./microHaulerProvider";
 const zipToCountyId = {
   "10458": 4,
  
@@ -15,6 +18,8 @@ const zipToCountyId = {
 export default function OrganicsRecyclingInfo({ address }) {
   const [shownItem, setShownItem] = useState("");
   const {singleCounty}= useCountyContext();
+  const {dropOffs}= useDropOffContext();
+  const {microHaulers}= useMicroHaulerContext(); 
  
   const [error, setError] = useState(null);
 
@@ -68,7 +73,15 @@ export default function OrganicsRecyclingInfo({ address }) {
           <h3 className="OrganicsRecyclingInfo-Header">
             Find a Composting Solution Near You : DropOff
           </h3>
-        
+          
+          <ul>
+           {dropOffs.map((dropOffss) => (
+                <p key={dropOffss.id}>
+                {dropOffss.name}, {dropOffss.address}
+               </p>
+                 ))}
+          </ul>
+
           
           <button name="solution" className={shownItem === "solution" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
@@ -87,6 +100,9 @@ export default function OrganicsRecyclingInfo({ address }) {
           <button name="facility" className={shownItem === "facility" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
         </div>
+        {microHaulers.map((microHaulerss)=> (
+          <p key={microHaulerss.id}> {microHaulerss.name}, {microHaulerss.address}</p>
+        ))}
         <div className="OrganicsRecyclingInfo-Description">
           {shownItem == "facility" ? "shown text" : ""} 
         

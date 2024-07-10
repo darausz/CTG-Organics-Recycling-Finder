@@ -6,12 +6,10 @@ export function CountyProvider({children}){
     const[counties,setCounty]= useState([]);
     const[singleCounty, setSingleCounty]= useState({});
     const[address, setAddress]= useState('');
-    const[dropOffLocations, setDropOffLocations] = useState([]);
-    const[microHaulers, setMicroHauler]= useState([]);
-    const[coordinates, setCoordinates] = useState([]);
+
 
     return(
-        <CountyContext.Provider value={{counties,setCounty,singleCounty,setSingleCounty,address,setAddress,dropOffLocations,setDropOffLocations, microHaulers,setMicroHauler, coordinates, setCoordinates}}>
+        <CountyContext.Provider value={{counties,setCounty,singleCounty,setSingleCounty,address,setAddress,dropOffLocations,setDropOffLocations, coordinates, setCoordinates}}>
             {children}
         </CountyContext.Provider>
     );

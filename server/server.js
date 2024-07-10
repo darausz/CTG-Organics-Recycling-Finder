@@ -13,6 +13,7 @@ const cityRouter= require('./routes/cityroute.js')
 const countyRouter= require('./routes/countyroute.js')
 const dropOffRouter=require('./routes/dropoffroute.js')
 const microhaulerRouter= require('./routes/microhaulerroute.js')
+const smartBinRouter= require('./routes/smartbinroute.js')
 const db= require('./config/db.js');
 //test DBB
 db.authenticate()
@@ -35,5 +36,6 @@ app.use('/city',cityRouter)
 app.use('/county',countyRouter)
 app.use('/dropOff',dropOffRouter)
 app.use('/microHauler',microhaulerRouter)
+app.use('/smartBin',smartBinRouter)
 const PORT= process.env.PORT || 5000;
 app.listen(PORT, 5000,()=> {console.log("server started on port 5000")})
