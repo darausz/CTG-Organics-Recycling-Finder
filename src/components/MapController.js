@@ -7,7 +7,6 @@ export default function MapController({ polygon }) {
   const { singleCounty } = useCountyContext();
   const fakeCoords = [[40.740193, -74.012345], [ 40.740145, -74.011537], [40.740818, -74.011456]];
   const map = useMap();
-  console.log(map);
   //forEach or map return <Marker ... />
   return (
     // <Polygon

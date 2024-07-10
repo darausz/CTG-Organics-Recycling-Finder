@@ -7,7 +7,6 @@ import faqIcon from "../assets/faqIcon.png";
 import helpIcon from "../assets/helpIcon.png";
 import axios from 'axios';
 import { useCountyContext } from "./countyProvider";
-import { CountyProvider } from "./countyProvider";
 const zipToCountyId = {
   "10458": 4,
  

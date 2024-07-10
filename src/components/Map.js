@@ -1,9 +1,10 @@
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import { useState} from 'react';
+import { useCountyContext } from './countyProvider';
 import MapController from './MapController';
 import USStates from './USStates';
 
-export default function Map({ mapType }) {
+export default function Map({ mapType}) {
   const [center, setCenter] = useState([40.7, -74]);
 
   {/*replace with info from db */ }
@@ -35,7 +36,7 @@ export default function Map({ mapType }) {
 
   return (
     <div className="Map-State">
-      <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
+      <MapContainer center={center} zoom={7} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

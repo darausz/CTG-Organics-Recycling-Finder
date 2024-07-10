@@ -16,9 +16,6 @@ module.exports = {
     abbreviation:{
       type: Sequelize.STRING
     }
-  
-
-
    });
   },
 

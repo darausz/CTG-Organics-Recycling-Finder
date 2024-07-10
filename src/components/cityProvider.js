@@ -4,7 +4,7 @@ const CityContext= createContext();
 
 export function CityProvider({children}){
     const[city,setCity]= useState([]);
-    const [singleCity, setSingleCity]= useState({});
+    const[singleCity, setSingleCity]= useState({});
    
   
 

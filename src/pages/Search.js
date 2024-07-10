@@ -1,13 +1,14 @@
 import Map from '../components/Map.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCountyContext } from "../components/countyProvider.js";
-
-
+import axios from "axios";
 
 export default function Search() {
-  const [input, setInput] = useState("");
-  const { setAddress } = useCountyContext();
+  const[input, setInput] = useState("");
+  const[error, setError] = useState("");
+  const { address, setAddress, setCoordinates } = useCountyContext();
+
   const handleClick = () => {
     setAddress(input);
   }
