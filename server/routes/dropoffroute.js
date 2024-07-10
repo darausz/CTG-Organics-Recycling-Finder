@@ -5,5 +5,7 @@ const dropOffController= require('../controllers/dropOffController.js')
 
 router.get('/',dropOffController.getAllDropOffs);
 
-router.get('/:id',dropOffController.getAllDropOffs);
+router.get('/:id',dropOffController.getDropOffId);
+// Route to get drop-offs by countyId
+router.get('/county/:countyId', dropOffController.getDropOffsByCountyId);
 module.exports = router;

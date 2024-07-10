@@ -6,15 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import { CountyProvider } from './components/countyProvider';
 import { CityProvider } from './components/cityProvider';
 import { DropoffProvider } from './components/dropOffProvider';
+import {MicroHaulerProvider} from './components/microHaulerProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <CountyProvider>
       <DropoffProvider>
+       <MicroHaulerProvider>
       <CityProvider>
     <App />
     </CityProvider>
+    </MicroHaulerProvider>
     </DropoffProvider>
     </CountyProvider>
     

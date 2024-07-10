@@ -21,3 +21,23 @@ exports.getMicroHaulerId= async(req,res)=>{
         return res.json(err)
     }
 }
+
+//get droppOff by countyId
+exports.getMicroHaulersByCountyId = async (req, res) => {
+    try{
+        const countyIdreponse= req.params.countyId;
+        const microhaulers= await MicroHauler.findAll({
+            where:{
+                countyId: countyIdreponse
+            }
+        });
+        if(!microhaulers){
+            return res.status(404).json({"Message": "Unable to find microhaulers with that County ID"})
+        }
+        return res.json(microhaulers);
+    }catch(err){
+        console.log(err);
+        return res.json(err);
+    }
+    
+};

@@ -5,3 +5,4 @@ export default function USStates() {
     <USAMap customize={{"DC2": {fill:"navy"}}}/>
   )
 }
+
