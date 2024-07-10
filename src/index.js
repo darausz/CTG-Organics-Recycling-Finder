@@ -7,6 +7,7 @@ import { CountyProvider } from './components/countyProvider';
 import { CityProvider } from './components/cityProvider';
 import { DropoffProvider } from './components/dropOffProvider';
 import {MicroHaulerProvider} from './components/microHaulerProvider';
+import { SmartBinsProvider } from './components/smartBinsProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,9 +15,11 @@ root.render(
     <CountyProvider>
       <DropoffProvider>
        <MicroHaulerProvider>
+        <SmartBinsProvider>
       <CityProvider>
     <App />
     </CityProvider>
+    </SmartBinsProvider>
     </MicroHaulerProvider>
     </DropoffProvider>
     </CountyProvider>
