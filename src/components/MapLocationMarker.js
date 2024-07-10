@@ -29,7 +29,7 @@ export default function MapLocationMarker() {
       if (coordinates.length !== 0) {
         map.flyTo(coordinates, 15, {duration: 1});
       }
-    }, [coordinates]);
+    }, [coordinates, map]);
 
   
   return coordinates.length === 0 ? null : (
