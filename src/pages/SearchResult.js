@@ -32,7 +32,9 @@ export default function SearchResult() {
     const fetchCoordinates = async () => {
       if (address) {
         try {
-          const {data: [location]} = await axios.get(`https://nominatim.openstreetmap.org/search?q=${address}&format=json`);
+          const reversed = address.split(" ").reverse().join(" "); //reversed to search larger regions first because nominatim searches left to right
+          console.log(reversed);
+          const {data: [location]} = await axios.get(`https://nominatim.openstreetmap.org/search?q=${reversed}&format=json`);
           console.log(location);
           const boundingBox = location.boundingBox;
           const coords = [parseFloat(location.lat), parseFloat(location.lon)];
