@@ -14,14 +14,6 @@ module.exports = {
         allowNull:false,
         type: Sequelize.STRING
       },
-      cityId:{ 
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'cities', 
-          key: 'id'       
-        },
-      },
       pickUp:{  
         type: Sequelize.STRING
       },

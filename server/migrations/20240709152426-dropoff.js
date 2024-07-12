@@ -10,14 +10,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      countyId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'counties',
-          key: 'id'
-        },
-      },
       //start of daraus code
       county: {
         type: Sequelize.STRING,

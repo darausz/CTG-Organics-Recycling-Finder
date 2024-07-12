@@ -26,11 +26,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     //start of daraus code
-    countyName:{
+    county:{
       type:DataTypes.STRING,
       allowNull: false,
     },
-    stateName:{
+    state:{
       type:DataTypes.STRING,
       allowNull: false,
     },

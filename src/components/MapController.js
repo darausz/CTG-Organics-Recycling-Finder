@@ -10,7 +10,8 @@ export default function MapController() {
   const { singleCounty, coordinates } = useCountyContext();
   const {dropOffs}= useDropOffContext();
   const {smartBins}= useSmartBinContext();
-  console.log('SmartBins inside MapController:', smartBins);
+  //console.log('SmartBins inside MapController:', smartBins);
+  console.log('dropOffs inside MapController:', dropOffs);
   console.log("page display");
   // const fakeCoords = [[40.740193, -74.012345], [ 40.740145, -74.011537], [40.740818, -74.011456]];
   /* const fakeCoords = [[40.746199, -73.919118],
@@ -108,15 +109,17 @@ export default function MapController() {
           )
         })) :
         ""} */}
-         {dropOffs.map((dropOff, index) => (
+         {dropOffs.map((dropOff, index) => {
+          console.log(dropOff);return (
+         
         <Marker
           key={index}
-          position={[dropOff.latitude, dropOff.longitude]}
+          position={[dropOff.longitude, dropOff.latitude]}
           icon={dropOffIcon}
         >
           <Popup>{dropOff.name}</Popup>
         </Marker>
-      ))}
+      )})}
 
       {/* {smartBinsCoodinates && smartBinsCoodinates.map((bin, index) => (
         <Marker

@@ -22,14 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
      type:  DataTypes.STRING,
     },
-    cityId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references:{
-        model: "cities",
-        key: 'id'
-      }
-    },
+   
     pickUp:{
       type:DataTypes.STRING,
     },

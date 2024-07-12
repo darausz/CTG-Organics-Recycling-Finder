@@ -17,20 +17,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       
     },
-    countyId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references:{
-        model: "counties",
-        key: 'id'
-      }
-    },
     //start of daraus code
-    countyName:{
+    county:{
       type:DataTypes.STRING,
       allowNull: false,
     },
-    stateName:{
+    state:{
       type:DataTypes.STRING,
       allowNull: false,
     },

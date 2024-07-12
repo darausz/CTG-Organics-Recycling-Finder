@@ -4,7 +4,7 @@ module.exports = {
       {
         id: 1,
         name: 'Queens',
-        cityId: 1,
+        
         city: "New York City",
         state: "New York",
         pickUp: 'Yes',
@@ -16,7 +16,7 @@ module.exports = {
         name: 'New York',
         city: "New York City",
         state: "New York",
-        cityId: 1,
+        
         pickUp: 'some',
         comLaw: true,
         resLaw: true
@@ -26,7 +26,7 @@ module.exports = {
         name: 'Brooklyn',
         city: "New York City",
         state: "New York",
-        cityId: 1,
+       
         pickUp: 'yes',
         comLaw: true,
         resLaw: true
@@ -36,7 +36,7 @@ module.exports = {
         name: 'Bronx',
         city: "New York City",
         state: "New York",
-        cityId: 1,
+     
         pickUp: 'yes',
 
         comLaw: true,
@@ -47,7 +47,7 @@ module.exports = {
         name: 'Staten Island',
         city: "New York City",
         state: "New York",
-        cityId: 1,
+        
         pickUp: 'Yes',
 
         comLaw: true,
@@ -58,7 +58,7 @@ module.exports = {
         name: 'District 3',
         city: "Seattle",
         state: "Washington",
-        cityId: 2,
+
         pickUp: 'yes',
         comLaw: true,
         resLaw: true
@@ -68,7 +68,7 @@ module.exports = {
         name: 'Downtown Omaha',
         city: "Omaha",
         state: "Nebraska",
-        cityId: 3,
+
         pickUp: 'no',
         comLaw: false,
         resLaw: false
@@ -78,7 +78,7 @@ module.exports = {
         name: 'Southwest Omaha',
         city: "Omaha",
         state: "Nebraska",
-        cityId: 3,
+
         pickUp: 'no',
         comLaw: false,
         resLaw: false
@@ -89,7 +89,7 @@ module.exports = {
         name: 'West Omaha',
         city: "Omaha",
         state: "Nebraska",
-        cityId: 3,
+ 
         pickUp: 'no',
         comLaw: false,
         resLaw: false

@@ -86,7 +86,8 @@ export default function SearchResult() {
 
     fetchCountyData();
   }, [state, county, setSingleCounty]);
-
+ 
+  //Fetching DropOffs locations by name and state
   useEffect(() => {
     const fetchdropOffbyId = async () => {
       console.log('in fetchdropOffbyId', singleCounty);
