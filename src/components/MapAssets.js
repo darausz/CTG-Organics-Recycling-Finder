@@ -1,6 +1,7 @@
 import {Icon} from "leaflet";
 import dropOff from "../assets/dropOffIcon.png";
 import locationMarker from "../assets/locationIcon.png";
+import smartBin from "../assets/Smart-Bin_Icon.png";
 
 export const dropOffIcon = new Icon({
   iconUrl: dropOff,
@@ -14,4 +15,12 @@ export const locationIcon = new Icon({
   iconAnchor: [10, 50],
   popupAnchor: [10, -40],
   iconSize: [40, 50],
+})
+
+export const smartBinIcon=new Icon({
+  iconUrl: smartBin,
+  iconAnchor: [10, 50],
+  popupAnchor: [10, -40],
+  iconSize: [40, 50],
+
 })

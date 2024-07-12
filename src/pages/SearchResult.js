@@ -9,6 +9,7 @@ import { useCityContext } from '../components/cityProvider.js';
 import { useDropOffContext } from '../components/dropOffProvider.js';
 import { useMicroHaulerContext } from '../components/microHaulerProvider.js';
 import { useSmartBinContext } from '../components/smartBinsProvider.js';
+import { smartBinIcon } from '../components/MapAssets.js';
 
 const zipToCountyId = {
   "10458": 4,
@@ -49,7 +50,7 @@ export default function SearchResult() {
     }
     fetchCoordinates();
   }, [address, setCoordinates]);
-  
+  //Fect County Data by CountyId
   useEffect(() => {
     const fetchCountyData = async () => {
       
@@ -69,6 +70,21 @@ export default function SearchResult() {
 
    fetchCountyData();
  }, [address,countyId,setSingleCounty]);
+ 
+ //Fetch all DropOffs data
+  useEffect(()=>{
+    const fetchDropOffs= async ()=>{
+      try{
+        const {data} = await axios.get(`http://localhost:5000/dropOff`);
+        console.log('dropOffs data ', data);
+        setDropOffs(data);
+  
+      }catch(err){
+        setError('Error fecthing DropOffs data');
+      }
+    };
+    fetchDropOffs();
+  },[setDropOffs])
 
  useEffect(()=> {
   const fetchdropOffbyId = async () =>{
@@ -108,17 +124,24 @@ export default function SearchResult() {
   };
   fetchMicroHaulersbyId();
  },[countyId,setMicroHaulers])
-/* 
- useEffect(()=>{
-  const fetchSmartBinsbyId= async ()=>{
-    if(countyId){
-      try{
 
-      }
+ //fetch all SmartBins 
+ useEffect(()=>{
+  const fetchSmartBins= async ()=>{
+
+    try{
+      const {data}= await axios.get(`http://localhost:5000/smartBin`);
+      console.log ('all smartBins data', data);
+      setSmartBins(data);
+    }catch(error){
+      setError('Error fetching all smartBins');
+      console.log(error);
     }
-  }
- })
- */
+  };
+  fetchSmartBins();
+ },[setSmartBins])
+
+ // fetching all city data
  useEffect(() => {
   const fetchCityData = async () => {
     if (singleCounty.cityId) {

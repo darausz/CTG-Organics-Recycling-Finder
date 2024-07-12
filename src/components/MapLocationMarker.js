@@ -4,7 +4,7 @@ import { useMap, Marker, Popup } from "react-leaflet";
 import { useState, useEffect } from "react";
 import { locationIcon } from './MapAssets';
 import { useCountyContext } from "./countyProvider";
-
+//your location only
 export default function MapLocationMarker() {
   const { coordinates } = useCountyContext();
   const [position, setPosition] = useState(null);
