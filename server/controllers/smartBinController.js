@@ -22,23 +22,22 @@ exports.getSmartBinId= async(req,res)=>{
     }
 }
 
-//get smartbins by CountyId
+//get smartbins by County
 
-exports.getSmartBinsbyCountyId= async(req,res)=>{
+exports.getSmartBinsByCounty= async(req,res)=>{
     try{
-        const countyIdresponse=req.params.countyId;
-        const smartBins= await SmartBin.findAll({
-            wherre:{
-                countyId: countyIdresponse
-            }
+        const county = req.params.county;
+        const state = req.params.state;
+        const smartBins=await SmartBin.findAll({
+            where:{
+                county:county,
+                state:state
+            },
+            logging: console.log
         });
-        if(!smartBins){
-            return res.status(404).json({"Message":"Unable to find smartBin with that County ID"})
-
-        }
-        return res.json(smartBins);
+        return res.json(smartBins)
     }catch(err){
-        return res.json(err);
+        return res.json(err)
     }
-};
+}
 

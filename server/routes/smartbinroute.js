@@ -7,5 +7,5 @@ const smartBinController= require('../controllers/smartBinController.js')
 router.get('/',smartBinController.getAllSmartBins);
 
 router.get('/:id',smartBinController.getSmartBinId);
-router.get('/county/:countyId',smartBinController.getSmartBinsbyCountyId);
+router.get('/:county:state',smartBinController.getSmartBinsByCounty);
 module.exports = router;

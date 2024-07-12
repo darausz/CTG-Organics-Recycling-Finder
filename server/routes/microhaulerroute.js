@@ -6,5 +6,6 @@ const microHaulerController= require('../controllers/microhaulerController.js')
 router.get('/',microHaulerController.getAllMicroHaulers);
 
 router.get('/:id',microHaulerController.getMicroHaulerId);
-router.get('/county/:countyId',microHaulerController.getMicroHaulersByCountyId);
+
+router.get(`/:county/:state`,microHaulerController.getMicroHaulersByCounty)
 module.exports = router;
