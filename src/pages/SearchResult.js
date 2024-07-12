@@ -90,7 +90,7 @@ export default function SearchResult() {
   //Fetching DropOffs locations by name and state
   useEffect(() => {
     const fetchdropOffbyId = async () => {
-      console.log('in fetchdropOffbyId', singleCounty);
+      console.log('in fetchdropOffbyId', singleCounty, state, county);
       if (singleCounty !== null) {
         try {
           const { data } = await axios.get(`http://localhost:5000/dropOff/${singleCounty.name}/${singleCounty.state}`);
@@ -155,21 +155,7 @@ export default function SearchResult() {
     }
    })
    */
-  useEffect(() => {
-    const fetchCityData = async () => {
-      if (singleCounty.cityId) {
-        try {
-          const { data } = await axios.get(`http://localhost:5000/city/${singleCounty.cityId}`);
-          setSingleCity(data);
-        } catch (error) {
-          setError('Error fetching city data');
-          console.log(error);
-        }
-      }
-    };
-
-    fetchCityData();
-  }, [singleCounty, setSingleCity]);
+  
 
 
 
@@ -199,7 +185,7 @@ export default function SearchResult() {
       <div className="state-infographic-container">
         <header className="state-infographic-header header">
           <h1 className="bold">
-            CITY: {singleCounty.name}, STATEID: {singleCounty.cityId} , STATE: {singleCity.name}
+            CITY: {singleCounty.name}  
           </h1>
         </header>
         <div className='state-infographic-body'>
