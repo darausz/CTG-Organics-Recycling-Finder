@@ -16,13 +16,15 @@ const zipToCountyId = {
 
 
 export default function SearchResult() {
+  const [county, setCounty] = useState(null);
+  const [state, setState] = useState(null);
   const { address, singleCounty, setSingleCounty, setCoordinates } = useCountyContext();
   const { singleCity, setSingleCity } = useCityContext();
-  const {setDropOffs} = useDropOffContext();
-  const {setMicroHaulers}= useMicroHaulerContext();
-  const {setSmartBins}= useSmartBinContext();
-  
-  
+  const { setDropOffs } = useDropOffContext();
+  const { setMicroHaulers } = useMicroHaulerContext();
+  const { setSmartBins } = useSmartBinContext();
+
+
 
   // const location = useLocation();
   // const address = location.state;
@@ -33,13 +35,24 @@ export default function SearchResult() {
       if (address) {
         try {
           const reversed = address.split(" ").reverse().join(" "); //reversed to search larger regions first because nominatim searches left to right
-          console.log(reversed);
-          const {data: [location]} = await axios.get(`https://nominatim.openstreetmap.org/search?q=${reversed}&format=json`);
-          console.log(location);
-          const boundingBox = location.boundingBox;
-          const coords = [parseFloat(location.lat), parseFloat(location.lon)];
-          console.log(coords);
+          const { data: [lookup] } = await axios.get(`https://nominatim.openstreetmap.org/search?q=${address}&format=json`);
+          console.log(lookup);
+          const boundingBox = lookup.boundingBox;
+          const coords = [parseFloat(lookup.lat), parseFloat(lookup.lon)];
+          const location = lookup.display_name.split(", ");
+
+          if (isNaN(parseInt(location.at(-2)))) {
+            setState(location.at(-2));
+            setCounty(location.at(-3).replace(/ County$/, ''));
+            console.log(location.at(-2) + " " + location.at(-3).replace(/ County$/, ''))
+          } 
+          else {
+            setState(location.at(-3));
+            setCounty(location.at(-4).replace(/ County$/, ''));
+            console.log(location.at(-3) + " " + location.at(-4).replace(/ County$/, ''))
+          }
           setCoordinates(coords);
+
         } catch (error) {
           setError('Error fetching coordinates');
           console.log(error);
@@ -50,14 +63,15 @@ export default function SearchResult() {
       }
     }
     fetchCoordinates();
-  }, [address, setCoordinates]);
-  
+  }, [address, setCoordinates, setState, setCounty]);
+
   useEffect(() => {
     const fetchCountyData = async () => {
-      
-      if (countyId) {
+
+      if (county !== null && state !== null) {
         try {
-          const { data } = await axios.get(`http://localhost:5000/county/${countyId}`);
+          const { data } = await axios.get(`http://localhost:5000/county/${county}/${state}`);
+          console.log(data);
           setSingleCounty(data);
 
         } catch (error) {
@@ -69,70 +83,88 @@ export default function SearchResult() {
       }
     };
 
-   fetchCountyData();
- }, [address,countyId,setSingleCounty]);
+    fetchCountyData();
+  }, [state, county, setSingleCounty]);
 
- useEffect(()=> {
-  const fetchdropOffbyId = async () =>{
-    console.log('in fetchdropOffbyId', countyId);
-    if (countyId){
-      try{
-        const {data} = await axios.get(`http://localhost:5000/dropOff/county/${countyId}`);
-        console.log('in fetchdropOffbyId data ', data);
-        setDropOffs(data);
-      }catch(err){
-        setError('Error fetching data');
-         console.log(error);
+  useEffect(() => {
+    const fetchdropOffbyId = async () => {
+      console.log('in fetchdropOffbyId', singleCounty);
+      if (singleCounty !== null) {
+        try {
+          const { data } = await axios.get(`http://localhost:5000/dropOff/${singleCounty.name}/${singleCounty.state}`);
+          console.log('in fetchdropOffbyId data ', data);
+          setDropOffs(data);
+        } catch (err) {
+          setError('Error fetching data');
+          console.log(error);
+        }
+      } else {
+        setError('invalid address');
       }
-    }else{
-      setError('invalid address');
-    }
-  };
-  fetchdropOffbyId();
- }, [countyId,setDropOffs])
+    };
+    fetchdropOffbyId();
+  }, [singleCounty, setDropOffs])
+  //  useEffect(()=> {
+  //   const fetchdropOffbyId = async () =>{
+  //     console.log('in fetchdropOffbyId', countyId);
+  //     if (countyId){
+  //       try{
+  //         const {data} = await axios.get(`http://localhost:5000/dropOff/county/${countyId}`);
+  //         console.log('in fetchdropOffbyId data ', data);
+  //         setDropOffs(data);
+  //       }catch(err){
+  //         setError('Error fetching data');
+  //          console.log(error);
+  //       }
+  //     }else{
+  //       setError('invalid address');
+  //     }
+  //   };
+  //   fetchdropOffbyId();
+  //  }, [countyId,setDropOffs])
 
- useEffect(()=> {
-  const fetchMicroHaulersbyId =async ()=>{
-    console.log('inside  fetchMicroHaulersbyId ');
-    if(countyId){
-      console.log('fetchMicroHaulersbyId  countyId ',countyId);
-      try{
-        const {data}= await axios.get(`http://localhost:5000/microHauler/county/${countyId}`);
-        console.log('in fetchdropOffbyId data ', data);
-        setMicroHaulers(data);
-      }catch(err){
-        setError('Error fetching MicroHauler countyId data');
+  //  useEffect(()=> {
+  //   const fetchMicroHaulersbyId =async ()=>{
+  //     console.log('inside  fetchMicroHaulersbyId ');
+  //     if(countyId){
+  //       console.log('fetchMicroHaulersbyId  countyId ',countyId);
+  //       try{
+  //         const {data}= await axios.get(`http://localhost:5000/microHauler/county/${countyId}`);
+  //         console.log('in fetchdropOffbyId data ', data);
+  //         setMicroHaulers(data);
+  //       }catch(err){
+  //         setError('Error fetching MicroHauler countyId data');
 
-      }
-    }else{
-      setError('iinvalid countyId');
-    }
-  };
-  fetchMicroHaulersbyId();
- },[countyId,setMicroHaulers])
-/* 
- useEffect(()=>{
-  const fetchSmartBinsbyId= async ()=>{
-    if(countyId){
-      try{
-
-      }
-    }
-  }
- })
- */
- useEffect(() => {
-  const fetchCityData = async () => {
-    if (singleCounty.cityId) {
-      try {
-        const { data } = await axios.get(`http://localhost:5000/city/${singleCounty.cityId}`);
-        setSingleCity(data);
-      } catch (error) {
-        setError('Error fetching city data');
-        console.log(error);
+  //       }
+  //     }else{
+  //       setError('iinvalid countyId');
+  //     }
+  //   };
+  //   fetchMicroHaulersbyId();
+  //  },[countyId,setMicroHaulers])
+  /* 
+   useEffect(()=>{
+    const fetchSmartBinsbyId= async ()=>{
+      if(countyId){
+        try{
+  
+        }
       }
     }
-  };
+   })
+   */
+  useEffect(() => {
+    const fetchCityData = async () => {
+      if (singleCounty.cityId) {
+        try {
+          const { data } = await axios.get(`http://localhost:5000/city/${singleCounty.cityId}`);
+          setSingleCity(data);
+        } catch (error) {
+          setError('Error fetching city data');
+          console.log(error);
+        }
+      }
+    };
 
     fetchCityData();
   }, [singleCounty, setSingleCity]);
@@ -169,7 +201,7 @@ export default function SearchResult() {
           </h1>
         </header>
         <div className='state-infographic-body'>
-          <Map mapType="state"/>
+          <Map mapType="state" />
           <DistrictInfo />
         </div>
       </div>

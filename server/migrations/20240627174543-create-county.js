@@ -14,7 +14,7 @@ module.exports = {
         allowNull:false,
         type: Sequelize.STRING
       },
-      cityId:{
+      cityId:{ 
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -31,6 +31,13 @@ module.exports = {
       resLaw:{
         type:Sequelize.BOOLEAN
       },
+      //start of daraus code
+      city:{
+        type:Sequelize.STRING,
+      },
+      state:{
+        type:Sequelize.STRING,
+      }
   
   
      });

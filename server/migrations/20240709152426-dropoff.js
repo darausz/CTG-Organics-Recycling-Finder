@@ -2,53 +2,63 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('dropOffs',{
-      id:{
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('dropOffs', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      countyId:{
+      countyId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references:{
+        references: {
           model: 'counties',
           key: 'id'
         },
       },
-      name:{
+      //start of daraus code
+      county: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      state: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      //end
+      name: {
         type: Sequelize.STRING
       },
-      address:{
+      address: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      website:{
+      website: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      email:{
+      email: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      phoneNum:{
+      phoneNum: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      timeOpen:{
+      timeOpen: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      monthOpen:{
+      monthOpen: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      longitude:{
+      longitude: {
         type: Sequelize.FLOAT,
       },
-      latitude:{
+      latitude: {
         type: Sequelize.FLOAT
       }
 
@@ -56,7 +66,7 @@ module.exports = {
     })
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('dropOffs')
   }
 };

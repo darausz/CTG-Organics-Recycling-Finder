@@ -2,53 +2,63 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-   await queryInterface.createTable('microHaulers',{
-    id:{
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER
-    },
-    countyId:{
-      allowNull: false,
-      type: Sequelize.INTEGER,
-      references:{
-        model: 'counties',
-        key: 'id'
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('microHaulers', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
       },
-    },
-    name:{
-      type: Sequelize.STRING
-    },
-    address:{
-      type: Sequelize.STRING,
-      allowNull: true
-    },
-    website:{
+      countyId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'counties',
+          key: 'id'
+        },
+      },
+      //start of daraus code
+      countyName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      stateName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      //end
+      name: {
+        type: Sequelize.STRING
+      },
+      address: {
         type: Sequelize.STRING,
         allowNull: true
-    },
-    email:{
-      type: Sequelize.STRING,
-      allowNull: true
-    },
-    phoneNum:{
-      type: Sequelize.STRING,
-      allowNull: true
-    },
-    longitude:{
-      type: Sequelize.FLOAT,
-     
-    },
-    latitude:{
-      type: Sequelize.FLOAT,
-    }
+      },
+      website: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      phoneNum: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      longitude: {
+        type: Sequelize.FLOAT,
 
-   });
+      },
+      latitude: {
+        type: Sequelize.FLOAT,
+      }
+
+    });
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('microHaulers');
   }
 };

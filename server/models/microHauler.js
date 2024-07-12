@@ -25,6 +25,16 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
+    //start of daraus code
+    countyName:{
+      type:DataTypes.STRING,
+      allowNull: false,
+    },
+    stateName:{
+      type:DataTypes.STRING,
+      allowNull: false,
+    },
+    //end
     name: {
         type:  DataTypes.STRING,
        },

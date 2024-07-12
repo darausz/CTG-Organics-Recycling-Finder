@@ -2,53 +2,63 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('smartBins',{
-      id:{
-        allowNull:false,
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('smartBins', {
+      id: {
+        allowNull: false,
         autoIncrement: true,
-        primaryKey:true,
+        primaryKey: true,
         type: Sequelize.INTEGER
       },
-      countyId:{
+      countyId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references:{
-        model: 'counties',
-        key: 'id'
+        references: {
+          model: 'counties',
+          key: 'id'
+        },
       },
-      },
-      name:{
+    //start of daraus code
+    countyName: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    stateName: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    //end
+      name: {
         type: Sequelize.STRING
       },
-      address:{
+      address: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      website:{
+      website: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      timeOpen:{
+      timeOpen: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      monthOpen:{
+      monthOpen: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      longitude:{
+      longitude: {
         type: Sequelize.FLOAT,
         allowNull: true
       },
-      latitude:{
+      latitude: {
         type: Sequelize.FLOAT,
         allowNull: true
       }
     })
   },
 
-  async down (queryInterface, Sequelize) {
-   await queryInterface.dropTable('smartBins');
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('smartBins');
   }
 };

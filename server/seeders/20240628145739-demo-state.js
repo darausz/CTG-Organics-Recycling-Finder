@@ -2,8 +2,8 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const states = [
       { id: 1, name: 'New York', abbreviation: 'NY' },
-      { id: 2, name: 'Washington', abbreviation: 'W' },
-      { id: 3, name: 'Nebraska', abbreviation: 'N' },
+      { id: 2, name: 'Washington', abbreviation: 'WA' },
+      { id: 3, name: 'Nebraska', abbreviation: 'NE' },
     ];
 
     for (const state of states) {

@@ -1,7 +1,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const cities = [
-      { id: 1, name: 'NYC', stateId: 1 },
+      { id: 1, name: 'New York', stateId: 1 },
       { id: 2, name: 'Seattle', stateId: 2 },
       { id: 3, name: 'Omaha', stateId: 3 }
     ];

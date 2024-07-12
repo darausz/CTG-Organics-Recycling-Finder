@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey:true,
       type: DataTypes.INTEGER,
-      
     },
     name: {
      type:  DataTypes.STRING,
@@ -39,6 +38,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     resLaw:{
         type: DataTypes.BOOLEAN
+    },
+    //start of daraus code
+    city:{
+      type:DataTypes.STRING,
+    },
+    state:{
+      type:DataTypes.STRING,
     }
    
   }, {

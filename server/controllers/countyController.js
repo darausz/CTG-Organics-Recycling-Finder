@@ -8,6 +8,23 @@ exports.getAllCounties= async(req,res)=>{
         return res.json(err)
     }
 }
+//get county by name and state
+exports.getCounty= async(req,res)=>{
+  try{
+      const name= req.params.name;
+      const state = req.params.state;
+      const county = await County.findOne({
+        where: {
+          name: name,
+          state: state
+        },
+        logging: console.log // Log the generated SQL query
+      });
+      return res.json(county);
+  }catch(err){
+      return res.json(err)
+  }
+}
 //get county by id
 exports.getCountyId= async(req,res)=>{
     try{
