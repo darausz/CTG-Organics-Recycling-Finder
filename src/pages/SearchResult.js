@@ -9,6 +9,7 @@ import { useCityContext } from '../components/cityProvider.js';
 import { useDropOffContext } from '../components/dropOffProvider.js';
 import { useMicroHaulerContext } from '../components/microHaulerProvider.js';
 import { useSmartBinContext } from '../components/smartBinsProvider.js';
+import { smartBinIcon } from '../components/MapAssets.js';
 
 const zipToCountyId = {
   "10458": 4,
