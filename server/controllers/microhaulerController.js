@@ -22,22 +22,21 @@ exports.getMicroHaulerId= async(req,res)=>{
     }
 }
 
-//get droppOff by countyId
-exports.getMicroHaulersByCountyId = async (req, res) => {
+//get microHauler by county and state
+
+exports.getMicroHaulersByCounty=async(req,res)=>{
     try{
-        const countyIdreponse= req.params.countyId;
-        const microhaulers= await MicroHauler.findAll({
+        const county=req.params.county;
+        const state= req.params.state;
+        const microHaulers= await MicroHauler.findAll({
             where:{
-                countyId: countyIdreponse
-            }
+                county:county,
+                state:state
+            },
+            logging: console.log
         });
-        if(!microhaulers){
-            return res.status(404).json({"Message": "Unable to find microhaulers with that County ID"})
-        }
-        return res.json(microhaulers);
-    }catch(err){
-        console.log(err);
-        return res.json(err);
+        return res.json(microHaulers);
+    }catch (err){
+        return res.json(err)
     }
-    
-};
+}
