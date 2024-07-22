@@ -2,7 +2,7 @@ import OrganicsRecyclingInfo from '../components/OrganicsRecyclingInfo.js';
 import DistrictInfoTable from '../components/DistrictInfoTable.js';
 import Map from '../components/Map.js';
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useCountyContext } from "../components/countyProvider.js";
 import { useCityContext } from '../components/cityProvider.js';
@@ -19,11 +19,12 @@ const zipToCountyId = {
 export default function SearchResult() {
   const [county, setCounty] = useState(null);
   const [state, setState] = useState(null);
-  const { address, singleCounty, setSingleCounty, setCoordinates } = useCountyContext();
+  const { address, setAddress, singleCounty, setSingleCounty, setCoordinates } = useCountyContext();
   const { singleCity, setSingleCity } = useCityContext();
   const { setDropOffs } = useDropOffContext();
   const { setMicroHaulers } = useMicroHaulerContext();
   const { setSmartBins } = useSmartBinContext();
+  const navigate = useNavigate();
 
 
 
@@ -37,8 +38,10 @@ export default function SearchResult() {
         try {
           const reversed = address.split(" ").reverse().join(" "); //reversed to search larger regions first because nominatim searches left to right
           const { data: [lookup] } = await axios.get(`https://nominatim.openstreetmap.org/search?q=${address}&format=json`);
-          console.log(reversed);
-          console.log(lookup);
+          console.log("lookup: ",lookup)
+          if (!lookup) {
+            navigate("/search");
+          }
           const boundingBox = lookup.boundingBox;
           const coords = [parseFloat(lookup.lat), parseFloat(lookup.lon)];
           const location = lookup.display_name.split(", ");
@@ -73,7 +76,7 @@ export default function SearchResult() {
 
     fetchCoordinates();
     translateSpecialCase();
-  }, [address, setCoordinates, setState, setCounty, setError]);
+  }, []);
 
   useEffect(() => {
     const fetchCountyData = async () => {
@@ -117,7 +120,6 @@ export default function SearchResult() {
       if (singleCounty !== null) {
         try {
           const { data } = await axios.get(`http://localhost:5000/smartBin/${singleCounty.name}/${singleCounty.state}`);
-          console.log('smart bins:', data);
           setSmartBins(data);
         } catch (err) {
           setError('Error fetching data');
@@ -136,7 +138,6 @@ export default function SearchResult() {
       if (singleCounty !== null) {
         try {
           const { data } = await axios.get(`http://localhost:5000/microHauler/${singleCounty.name}/${singleCounty.state}`);
-          console.log('microhaulers:', data);
           setMicroHaulers(data);
         } catch (err) {
           setError('Error fetching data');
@@ -185,7 +186,7 @@ export default function SearchResult() {
         </div>
       </div>
       <div className='organics-recycling-info-container'>
-        <button>
+        <button onClick={(e) => {setAddress("")}}>
           <Link className='back-button' to="/search"></Link>
         </button>
         <OrganicsRecyclingInfo address={address} />

@@ -41,7 +41,6 @@ export default function OrganicsRecyclingInfo({ address }) {
     <div className="OrganicsRecyclingInfo">
       <div className="OrganicsRecyclingInfo-Address">
         {address}
-        {/* <p>{singleCounty ? singleCounty.name : 'Loading...'}</p> */}
       </div>
       <div className="OrganicsRecyclingInfo-Section">
         <h3 className="OrganicsRecyclingInfo-Header">
@@ -55,7 +54,7 @@ export default function OrganicsRecyclingInfo({ address }) {
         <div className="OrganicsRecyclingInfo-Dropdown">
           <img className="OrganicsRecyclingInfo-Icon" src={facilityIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
-            Microhaulers Near You
+            Microhaulers Near You ({microHaulers.length})
           </h3>
           <button name="facility" className={shownItem === "facility" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
@@ -91,6 +90,19 @@ export default function OrganicsRecyclingInfo({ address }) {
               "No location selected")
             :
             ""}
+        </div>
+      </div>
+      <div className="OrganicsRecyclingInfo-Section">
+        <div className="OrganicsRecyclingInfo-Dropdown">
+          <img className="OrganicsRecyclingInfo-Icon" src={guideIcon}></img>
+          <h3 className="OrganicsRecyclingInfo-Header">
+            What are the Four Pillars?
+          </h3>
+          <button name="pillars" className={shownItem === "pillars" ? "collapse-button" : "expand-button"} onClick={expand}>
+          </button>
+        </div>
+        <div className="OrganicsRecyclingInfo-Description">
+          {shownItem == "pillars" ? "Insert description here" : ""} 
         </div>
       </div>
       {/*

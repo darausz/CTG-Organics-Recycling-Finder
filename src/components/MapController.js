@@ -18,10 +18,6 @@ export default function MapController() {
   const map = useMap();
   //forEach or map return <Marker ... />
 
-  function setMarker(index) {
-    setSelectedLocation(dropOffs[index]);
-  }
-
   return (
     // <Polygon
     //   eventHandlers={{
@@ -69,7 +65,7 @@ export default function MapController() {
           index={index}
           position={[dropOff.longitude, dropOff.latitude]}
           icon={dropOffIcon}
-          eventHandlers={{click: () => setMarker(index)}}
+          eventHandlers={{click: () => setSelectedLocation(dropOffs[index])}}
         >
           <Popup>{dropOff.name}</Popup>
         </Marker>
@@ -90,7 +86,7 @@ export default function MapController() {
           index={index}
           position={[smartBin.latitude, smartBin.longitude]}
           icon={smartBinIcon}
-          eventHandlers={{click: () => setMarker(index)}}
+          eventHandlers={{click: () => setSelectedLocation(smartBins[index])}}
         >
           <Popup>{smartBin.name}</Popup>
         </Marker>
