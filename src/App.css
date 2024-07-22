@@ -159,7 +159,6 @@ body {
   padding-bottom: 1rem;
   margin:3rem;
   padding-left:4rem;
-  width:40%;
 }
 
 .state-infographic-container {
@@ -169,9 +168,10 @@ body {
 
 .state-infographic-body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 4rem;
-  gap: 4rem;
+  gap: 1rem;
+  align-items: center;
 }
 
 .organics-recycling-info-container {
@@ -195,7 +195,7 @@ body {
 /* Map */
 
 .Map-State {
-  width: 40%;
+  width: 100%;
   height: 40rem;
   background-color: aqua;
 }
@@ -231,10 +231,13 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-/* DistrictInfoTable */ 
+
+.DistrictInfo-TableRow {
+  background-color: white;
+}
 
 .DistrictInfo-Services {
-  background-color: white;
+  
   color:black;
   font-size: 1rem;
 }

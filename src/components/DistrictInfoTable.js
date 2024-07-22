@@ -10,13 +10,13 @@ export default function DistrictInfoTable() {
   return (
     <div className="DistrictInfo-Services">
       <table>
-        <tr>
+        <tr className="DistrictInfo-TableRow">
           <td>Residential Pickup</td>
           <td>Drop-off Locations</td>
           <td>Micro-haulers</td>
           <td>Smart Bins</td>
         </tr>
-        <tr>
+        <tr className="DistrictInfo-TableRow">
           <td className={`${services[0]}-service-icon`}></td>
           <td className={`${services[1]}-service-icon`}></td>
           <td className={`${services[2]}-service-icon`}></td>

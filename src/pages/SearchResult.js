@@ -1,5 +1,5 @@
 import OrganicsRecyclingInfo from '../components/OrganicsRecyclingInfo.js';
-import DistrictInfo from '../components/DistrictInfo.js';
+import DistrictInfoTable from '../components/DistrictInfoTable.js';
 import Map from '../components/Map.js';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
@@ -36,7 +36,8 @@ export default function SearchResult() {
       if (address) {
         try {
           const reversed = address.split(" ").reverse().join(" "); //reversed to search larger regions first because nominatim searches left to right
-          const { data: [lookup] } = await axios.get(`https://nominatim.openstreetmap.org/search?q=${reversed}&format=json`);
+          const { data: [lookup] } = await axios.get(`https://nominatim.openstreetmap.org/search?q=${address}&format=json`);
+          console.log(reversed);
           console.log(lookup);
           const boundingBox = lookup.boundingBox;
           const coords = [parseFloat(lookup.lat), parseFloat(lookup.lon)];
@@ -175,12 +176,12 @@ export default function SearchResult() {
       <div className="state-infographic-container">
         <header className="state-infographic-header header">
           <h1 className="bold">
-            CITY: {singleCounty.name}, STATE: {singleCounty.city}
+            {singleCounty.name}, {singleCounty.state}
           </h1>
         </header>
         <div className='state-infographic-body'>
           <Map mapType="state" />
-          <DistrictInfo />
+          <DistrictInfoTable />
         </div>
       </div>
       <div className='organics-recycling-info-container'>

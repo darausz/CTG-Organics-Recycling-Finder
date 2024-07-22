@@ -5,8 +5,8 @@ import { useCountyContext } from "../components/countyProvider.js";
 import axios from "axios";
 
 export default function Search() {
-  const[input, setInput] = useState("");
-  const[error, setError] = useState("");
+  const [input, setInput] = useState("");
+  const [error, setError] = useState("");
   const { address, setAddress, setCoordinates } = useCountyContext();
 
   const handleClick = () => {
@@ -21,9 +21,7 @@ export default function Search() {
             ORGANICS RECYCLING FINDER
           </h1>
         </header>
-
         <Map mapType="country" />
-
       </div>
       <div className='search-container'>
         <div className="search-header">
