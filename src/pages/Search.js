@@ -8,6 +8,7 @@ export default function Search() {
   const[input, setInput] = useState("");
   const[error, setError] = useState("");
   const { address, setAddress, setCoordinates } = useCountyContext();
+  const {coordinates}= useCountyContext();
 
   const handleClick = () => {
     setAddress(input);

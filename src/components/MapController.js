@@ -133,7 +133,7 @@ export default function MapController() {
       {smartBins.map((smartBin, index) => (
         <Marker
           key={index}
-          position={[smartBin.latitude, smartBin.longitude]}
+          position={[smartBin.longitude,smartBin.latitude]}
           icon={smartBinIcon}
         >
           <Popup>{smartBin.name}</Popup>
