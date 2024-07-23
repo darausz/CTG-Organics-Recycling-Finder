@@ -5,22 +5,15 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useCountyContext } from "../components/countyProvider.js";
-import { useCityContext } from '../components/cityProvider.js';
 import { useDropOffContext } from '../components/dropOffProvider.js';
 import { useMicroHaulerContext } from '../components/microHaulerProvider.js';
 import { useSmartBinContext } from '../components/smartBinsProvider.js';
 import { smartBinIcon } from '../components/MapAssets.js';
 
-const zipToCountyId = {
-  "10458": 4,
-};
-
-
 export default function SearchResult() {
   const [county, setCounty] = useState(null);
   const [state, setState] = useState(null);
   const { address, setAddress, singleCounty, setSingleCounty, setCoordinates } = useCountyContext();
-  const { singleCity, setSingleCity } = useCityContext();
   const { setDropOffs } = useDropOffContext();
   const { setMicroHaulers } = useMicroHaulerContext();
   const { setSmartBins } = useSmartBinContext();
@@ -31,7 +24,6 @@ export default function SearchResult() {
   // const location = useLocation();
   // const address = location.state;
   const [error, setError] = useState(null);
-  const countyId = zipToCountyId[String(address)];
   useEffect(() => {
     const fetchCoordinates = async () => {
       if (address) {
@@ -42,19 +34,16 @@ export default function SearchResult() {
           if (!lookup) {
             navigate("/search");
           }
-          const boundingBox = lookup.boundingBox;
           const coords = [parseFloat(lookup.lat), parseFloat(lookup.lon)];
           const location = lookup.display_name.split(", ");
 
           if (isNaN(parseInt(location.at(-2)))) { //check if there is a zipcode
             setState(location.at(-2));
             setCounty(location.at(-3).replace(/ County$/, ''));
-            console.log(location.at(-2) + " " + location.at(-3).replace(/ County$/, ''))
           } 
           else {
             setState(location.at(-3));
             setCounty(location.at(-4).replace(/ County$/, ''));
-            console.log(location.at(-3) + " " + location.at(-4).replace(/ County$/, ''))
           }
           setCoordinates(coords);
 
@@ -83,7 +72,6 @@ export default function SearchResult() {
       if (county !== null && state !== null) {
         try {
           const { data } = await axios.get(`http://localhost:5000/county/${county}/${state}`);
-          console.log(data);
           setSingleCounty(data);
         } catch (error) {
           setError('Error fetching data');
@@ -149,28 +137,6 @@ export default function SearchResult() {
     };
     fetchMicroHaulerByCounty();
   }, [singleCounty, setMicroHaulers, setError])
-
-
-
-  /* const filterDropOffLocations2 = (countyData) => {
-    if (countyData && countyData.dropOff) {
-      const dropOffObjects = countyData.dropOff.map(location => {
-        const [name, location, website, email, time, phoneNumber, months] = location.split(',').map(item => item.trim());
-        return {
-          name,
-          location,
-          website,
-          email,
-          time,
-          phoneNumber,
-          months
-        };
-      });
-      setDropOffLocations(dropOffObjects);
-    }
-  };
-   */
-
 
   return (
     <div className='search-result-page'>

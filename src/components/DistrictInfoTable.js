@@ -1,29 +1,39 @@
 import { useState, useEffect } from "react";
+import { useDropOffContext } from "./dropOffProvider";
+import { useMicroHaulerContext } from "./microHaulerProvider";
+import { useSmartBinContext } from './smartBinsProvider.js';
+import { useCountyContext } from './countyProvider.js';
 
 export default function DistrictInfoTable() {
   const [services, setServices] = useState([]);
+  const { dropOffs } = useDropOffContext();
+  const { microHaulers } = useMicroHaulerContext();
+  const { smartBins } = useSmartBinContext();
+  const { singleCounty } = useCountyContext();
+
 
   useEffect(() => {
-    setServices(["yes", "yes", "no", "yes"]);
-  }, [])
+    const services = Array(4).fill("no");
+    if (singleCounty !== null) {
+      if (singleCounty.pickUp == "Yes") {
+        services[0] = "yes";
+      }
+      if (dropOffs.length !== 0) {
+        services[1] = "yes";
+      }
+      if (microHaulers.length !== 0) {
+        console.log("asdas",microHaulers);
+        services[2] = "yes";
+      }
+      if (smartBins.length !== 0) {
+        services[3] = "yes";
+      }
+    }
+    
+    setServices(services);
+  }, [singleCounty, dropOffs, microHaulers, smartBins])
 
   return (
-    // <div className="DistrictInfo-Services">
-    //   <table>
-    //     <tr className="DistrictInfo-TableRow">
-    //       <td>Residential Pickup</td>
-    //       <td>Drop-off Locations</td>
-    //       <td>Micro-haulers</td>
-    //       <td>Smart Bins</td>
-    //     </tr>
-    //     <tr className="DistrictInfo-TableRow">
-    //       <td className={`${services[0]}-service-icon`}></td>
-    //       <td className={`${services[1]}-service-icon`}></td>
-    //       <td className={`${services[2]}-service-icon`}></td>
-    //       <td className={`${services[3]}-service-icon`}></td>
-    //     </tr>
-    //   </table>
-    // </div>
     <div className="DistrictInfo-Services">
       <div className="DistrictInfo-ServicesContainer">
         <div>Residential Pickup</div>

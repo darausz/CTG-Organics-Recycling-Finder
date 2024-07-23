@@ -2,7 +2,11 @@ import Map from '../components/Map.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCountyContext } from "../components/countyProvider.js";
-import axios from "axios";
+import strongPolicyIcon from "../assets/strongPolicyIcon.png";
+import moderatePolicyIcon from "../assets/moderatePolicyIcon.png";
+import weakPolicyIcon from "../assets/weakPolicyIcon.png";
+import noPolicyIcon from "../assets/noPolicyIcon.png";
+
 
 export default function Search() {
   const [input, setInput] = useState("");
@@ -18,7 +22,7 @@ export default function Search() {
       <div className="country-container">
         <header className="country-header header">
           <h1 className="bold">
-            ORGANICS RECYCLING FINDER
+            FIND COMPOSTING SOLUTIONS
           </h1>
         </header>
         <Map mapType="country" />
@@ -45,7 +49,32 @@ export default function Search() {
         </div>
         <div className='search-legend'>
           <p>Organic waste bans & waste recycling laws categories</p>
-          <p>Strong Policy Moderate Policy Weak Policy No Policy</p> {/* turn into flexbox later */}
+          <div className='search-policy-container'>
+            <div className='search-policy'>
+              <img className='search-policy-color' src={strongPolicyIcon} />
+              <div className='search-policy-category'>
+                Strong Policy
+              </div>
+            </div>
+            <div className='search-policy grow'>
+              <img className='search-policy-color' src={moderatePolicyIcon} />
+              <div className='search-policy-category'>
+                Moderate Policy
+              </div>
+            </div>
+            <div className='search-policy'>
+              <img className='search-policy-color' src={weakPolicyIcon} />
+              <div className='search-policy-category'>
+                Weak Policy
+              </div>
+            </div>
+            <div className='search-policy  grow'>
+              <img className='search-policy-color' src={noPolicyIcon} />
+              <div className='search-policy-category'>
+                No Policy
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
