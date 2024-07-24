@@ -55,7 +55,7 @@ module.exports = {
       },
       {
         id: 6,
-        name: 'District 3',
+        name: 'King',
         city: "Seattle",
         state: "Washington",
 
@@ -65,7 +65,7 @@ module.exports = {
       },
       {
         id: 7,
-        name: 'Downtown Omaha',
+        name: 'Douglas',
         city: "Omaha",
         state: "Nebraska",
 
@@ -73,27 +73,7 @@ module.exports = {
         comLaw: false,
         resLaw: false
       },
-      {
-        id: 8,
-        name: 'Southwest Omaha',
-        city: "Omaha",
-        state: "Nebraska",
-
-        pickUp: 'no',
-        comLaw: false,
-        resLaw: false
-      },
-
-      {
-        id: 9,
-        name: 'West Omaha',
-        city: "Omaha",
-        state: "Nebraska",
- 
-        pickUp: 'no',
-        comLaw: false,
-        resLaw: false
-      }
+      
 
     ]);
   },

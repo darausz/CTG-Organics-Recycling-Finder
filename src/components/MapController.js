@@ -34,7 +34,7 @@ export default function MapController() {
         <Marker
           key={index}
           index={index}
-          position={[smartBin.latitude, smartBin.longitude]}
+          position={[smartBin.longitude,smartBin.latitude]}
           icon={smartBinIcon}
           eventHandlers={{click: () => setSelectedLocation(smartBins[index])}}
         >

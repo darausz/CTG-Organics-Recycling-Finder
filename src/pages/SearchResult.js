@@ -143,7 +143,7 @@ export default function SearchResult() {
       <div className="state-infographic-container">
         <header className="state-infographic-header header">
           <h1 className="bold">
-            {singleCounty.name}, {singleCounty.state}
+           {singleCounty.name} County, {singleCounty.state}
           </h1>
         </header>
         <div className='state-infographic-body'>

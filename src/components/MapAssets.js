@@ -21,6 +21,6 @@ export const smartBinIcon=new Icon({
   iconUrl: smartBin,
   iconAnchor: [10, 50],
   popupAnchor: [10, -40],
-  iconSize: [40, 50],
+  iconSize: [15, 25],
 
 })

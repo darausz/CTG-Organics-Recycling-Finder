@@ -16,7 +16,10 @@ export default function Search() {
   const handleClick = () => {
     setAddress(input);
   }
-
+  useEffect(() => {
+    // Reset coordinates when the component mounts
+    setCoordinates([40.7, -74]);
+  }, [setCoordinates]); 
   return (
     <div className='search-page'>
       <div className="country-container">
