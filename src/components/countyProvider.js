@@ -12,15 +12,27 @@ export function CountyProvider({children}){
    } else {
      parsedSingleCounty = {}; 
    }
+
+   const storedCoordinates= localStorage.getItem('coordinates');
+   let parsedCoordinates;
+   if(storedCoordinates){
+    parsedCoordinates=JSON.parse(storedCoordinates);
+   }else{
+    parsedCoordinates= [];
+   }
     const[counties,setCounty]= useState([]);
     const[singleCounty, setSingleCounty]= useState(parsedSingleCounty);
     const[address, setAddress]= useState('');
-    const[coordinates, setCoordinates] = useState([]);
+    const[coordinates, setCoordinates] = useState(parsedCoordinates);
     const[selectedLocation, setSelectedLocation] = useState({});
     
     useEffect(()=>{
         localStorage.setItem('singleCounty',JSON.stringify(singleCounty))
     },[singleCounty])  
+
+    useEffect(()=>{
+      localStorage.setItem('coordinates',JSON.stringify(coordinates))
+    }, [coordinates])
    
     /* useEffect(() => {
         localStorage.setItem('counties', JSON.stringify(counties));
