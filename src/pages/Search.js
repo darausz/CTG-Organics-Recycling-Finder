@@ -48,7 +48,7 @@ export default function Search() {
           </button>
         </div>
         <div className='search-legend'>
-          <p>Organic waste bans & waste recycling laws categories</p>
+          <div className='search-legend-description'>Organic waste bans & waste recycling laws categories</div>
           <div className='search-policy-container'>
             <div className='search-policy'>
               <img className='search-policy-color' src={strongPolicyIcon} />

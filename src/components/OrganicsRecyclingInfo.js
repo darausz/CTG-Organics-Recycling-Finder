@@ -16,7 +16,7 @@ const zipToCountyId = {
 };
 
 export default function OrganicsRecyclingInfo({ address }) {
-  const [shownItem, setShownItem] = useState("");
+  const [shownItem, setShownItem] = useState("pillars");
   const { singleCounty, selectedLocation } = useCountyContext();
   const { dropOffs } = useDropOffContext();
   const { microHaulers } = useMicroHaulerContext();
@@ -48,7 +48,7 @@ export default function OrganicsRecyclingInfo({ address }) {
         </div>
         <div className="OrganicsRecyclingInfo-Description">
           {!(singleCounty.comLaw && singleCounty.resLaw) ? "There are no recycling laws in your area" : ""}
-          {singleCounty.resLaw ? <div>There are residental recycling laws in your area</div> : ""}
+          {singleCounty.resLaw ? <div>There are residential recycling laws in your area</div> : ""}
           {singleCounty.comLaw ? <div>There are commercial recycling laws in your area</div> : ""}
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function OrganicsRecyclingInfo({ address }) {
         <div className="OrganicsRecyclingInfo-Dropdown">
           <img className="OrganicsRecyclingInfo-Icon" src={solutionIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
-            Select a composting solution near you
+            Select a Composting Solution Near You
           </h3>
           <button name="solution" className={shownItem === "solution" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
@@ -98,7 +98,7 @@ export default function OrganicsRecyclingInfo({ address }) {
         <div className="OrganicsRecyclingInfo-Dropdown">
           <img className="OrganicsRecyclingInfo-Icon" src={guideIcon}></img>
           <h3 className="OrganicsRecyclingInfo-Header">
-            What are the Four Pillars?
+            What are the Composting Solutions?
           </h3>
           <button name="pillars" className={shownItem === "pillars" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
