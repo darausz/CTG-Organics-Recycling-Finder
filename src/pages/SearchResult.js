@@ -35,8 +35,9 @@ export default function SearchResult() {
             navigate("/search");
           }
           const coords = [parseFloat(lookup.lat), parseFloat(lookup.lon)];
+          console.log("lookup.display_name: ", lookup.display_name);
           const location = lookup.display_name.split(", ");
-
+          
           if (isNaN(parseInt(location.at(-2)))) { //check if there is a zipcode
             setState(location.at(-2));
             setCounty(location.at(-3).replace(/ County$/, ''));
@@ -137,7 +138,7 @@ export default function SearchResult() {
     };
     fetchMicroHaulerByCounty();
   }, [singleCounty, setMicroHaulers, setError])
-
+  console.log("singleCounty: ",singleCounty);
   return (
     <div className='search-result-page'>
       <div className="state-infographic-container">

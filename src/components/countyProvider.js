@@ -3,15 +3,24 @@ import React, { useState, useContext, createContext,useEffect } from "react";
 const CountyContext= createContext();
 
 export function CountyProvider({children}){
-   // const storedSingleCounty= JSON.parse(localStorage.getItem('singleCounty'))
+   //const storedSingleCounty= JSON.parse(localStorage.getItem('singleCounty'))
+   const storedSingleCounty=localStorage.getItem('singleCounty');
+   let parsedSingleCounty;
+  
+   if (storedSingleCounty) {
+     parsedSingleCounty = JSON.parse(storedSingleCounty);
+   } else {
+     parsedSingleCounty = {}; 
+   }
     const[counties,setCounty]= useState([]);
-    const[singleCounty, setSingleCounty]= useState({});
+    const[singleCounty, setSingleCounty]= useState(parsedSingleCounty);
     const[address, setAddress]= useState('');
     const[coordinates, setCoordinates] = useState([]);
     const[selectedLocation, setSelectedLocation] = useState({});
- /*  useEffect(()=>{
+    
+    useEffect(()=>{
         localStorage.setItem('singleCounty',JSON.stringify(singleCounty))
-    },[singleCounty])  */
+    },[singleCounty])  
    
     /* useEffect(() => {
         localStorage.setItem('counties', JSON.stringify(counties));

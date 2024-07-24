@@ -17,7 +17,7 @@ export default function DistrictInfoTable() {
     if (singleCounty !== null) {
       if (singleCounty.pickUp == "Yes") {
         services[0] = "yes";
-      }
+      }                               
       if (dropOffs.length !== 0) {
         services[1] = "yes";
       }
