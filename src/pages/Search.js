@@ -7,13 +7,16 @@ import axios from "axios";
 export default function Search() {
   const[input, setInput] = useState("");
   const[error, setError] = useState("");
-  const { address, setAddress, setCoordinates } = useCountyContext();
-  const {coordinates}= useCountyContext();
+  const { address, setAddress } = useCountyContext();
+  const {setCoordinates}= useCountyContext();
 
   const handleClick = () => {
     setAddress(input);
   }
-
+  useEffect(() => {
+    // Reset coordinates when the component mounts
+    setCoordinates([40.7, -74]);
+  }, [setCoordinates]); 
   return (
     <div className='search-page'>
       <div className="country-container">
