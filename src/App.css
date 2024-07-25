@@ -412,12 +412,18 @@ td {
 
   .home-page-header {
     width: 100%;
-    margin: 1rem;
+    margin: 1rem
+  }
+
+  .home-page-header-heading {
+    margin: 0rem 0rem 2rem 0rem;
   }
 
   .home-page-header-description {
     width:90%;
     margin-top: 1rem;
+    text-align: center;
+    padding-bottom: 0;
   }
 
   .start-button {
@@ -431,9 +437,14 @@ td {
     gap: 4rem;
   }
 
+  .infographic-description {
+    width:95%;
+  }
+
   .search-page {
     flex-direction: column;
     width: 100%;
+    gap: 1rem;
   }
 
   .country-container {
@@ -447,10 +458,14 @@ td {
 
   .search-container {
     margin-top: 0;
-    padding-left: 10%;
+    padding: 0 5%;
     width: 100%;
+    align-self: start;
   }
 
+  .search-legend {
+    margin-bottom: 2rem;
+  }
   .search-policy {
     width: 50%;
   }
@@ -469,7 +484,7 @@ td {
   }
 
   .state-infographic-body {
-    margin: 1rem;
+    margin: 2rem;
   }
 
   .Map-Country {
@@ -479,13 +494,14 @@ td {
   }
 
   svg {
-    width: 100VW;
+    width: 95VW;
   }
 
   .DistrictInfo-Services {
     flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1rem;
     gap: 1rem;
-    margin: 1rem;
     padding: 0;
   }
 
@@ -496,12 +512,13 @@ td {
   }
 
   .organics-recycling-info-container {
-    width: 90%;
-    margin: auto;
+    margin: 2rem;
+    width: auto;
   }
 
   .OrganicsRecyclingInfo-Header {
     font-size:1.5rem;
+    max-width: 80%;
   }
 
  
