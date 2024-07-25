@@ -8,7 +8,6 @@ import { useCountyContext } from "../components/countyProvider.js";
 import { useDropOffContext } from '../components/dropOffProvider.js';
 import { useMicroHaulerContext } from '../components/microHaulerProvider.js';
 import { useSmartBinContext } from '../components/smartBinsProvider.js';
-import supabase from "../config/supabase.js";
 
 export default function SearchResult() {
   const [county, setCounty] = useState(null);
@@ -69,32 +68,19 @@ export default function SearchResult() {
   useEffect(() => {
     const fetchCountyData = async () => {
       if (county !== null && state !== null) {
-        //   try {
-        //     const { data } = await axios.get(`http://localhost:5000/county/${county}/${state}`);
-        //     setSingleCounty(data);
-        //   } catch (error) {
-        //     setError('Error fetching data');
-        //     console.log(error);
-        //   }
-        // } else {
-        //   setError('Invalid address');
-        //       setError('Error fetching data');
-        //       console.log(error);
+          try {
+            const { data } = await axios.get(`http://localhost:5000/county/${county}/${state}`);
+            setSingleCounty(data);
+          } catch (error) {
+            setError('Error fetching data');
+            console.log(error);
+          }
+        } else {
+          setError('Invalid address');
+              setError('Error fetching data');
+              console.log(error);
         console.log(county, state)
-        try {
-          const { data, error } = await supabase
-            .from('County')
-            .select('*')
-            .match({
-              'name': county,
-              'state': state
-            })
-            .single()
-          console.log("county", data)
-          setSingleCounty(data)
-        } catch (error) {
-          console.log(error);
-        }
+       
       }
     };
     fetchCountyData();
@@ -104,29 +90,17 @@ export default function SearchResult() {
   useEffect(() => {
     const fetchDropOffByCounty = async () => {
       if (singleCounty !== null) {
-        //   try {
-        //     const { data } = await axios.get(`http://localhost:5000/dropOff/${singleCounty.name}/${singleCounty.state}`);
-        //     setDropOffs(data);
-        //   } catch (err) {
-        //     setError('Error fetching data');
-        //     console.log(error);
-        //   }
-        // } else {
-        //   setError('invalid address');
-        // }
-        try {
-          const { data: dropoffs, error } = await supabase
-            .from('Dropoff')
-            .select('*')
-            .match({
-              'county': singleCounty.name,
-              'state': singleCounty.state
-            })
-          setDropOffs(dropoffs)
-        } catch (error) {
-          console.log(error);
+          try {
+            const { data } = await axios.get(`http://localhost:5000/dropOff/${singleCounty.name}/${singleCounty.state}`);
+            setDropOffs(data);
+          } catch (err) {
+            setError('Error fetching data');
+            console.log(error);
+          }
+        } else {
+          setError('invalid address');
         }
-      }
+       
     };
     fetchDropOffByCounty();
   }, [singleCounty, setDropOffs])
@@ -135,28 +109,17 @@ export default function SearchResult() {
   useEffect(() => {
     const fetchSmartBinByCounty = async () => {
       if (singleCounty !== null) {
-        //   try {
-        //     const { data } = await axios.get(`http://localhost:5000/smartBin/${singleCounty.name}/${singleCounty.state}`);
-        //     setSmartBins(data);
-        //   } catch (err) {
-        //     setError('Error fetching data');
-        //     console.log(error);
-        //   }
-        // } else {
-        //   setError('invalid address');
-        try {
-          const { data: smartbins, error } = await supabase
-            .from('Smartbin')
-            .select('*')
-            .match({
-              'county': singleCounty.name,
-              'state': singleCounty.state
-            })
-          setSmartBins(smartbins)
-        } catch (error) {
-          console.log(error);
+          try {
+            const { data } = await axios.get(`http://localhost:5000/smartBin/${singleCounty.name}/${singleCounty.state}`);
+            setSmartBins(data);
+          } catch (err) {
+            setError('Error fetching data');
+            console.log(error);
+          }
+        } else {
+          setError('invalid address');
         }
-      }
+       
     };
     fetchSmartBinByCounty();
   }, [singleCounty, setSmartBins, setError])
@@ -165,27 +128,16 @@ export default function SearchResult() {
   useEffect(() => {
     const fetchMicroHaulerByCounty = async () => {
       if (singleCounty !== null) {
-        //   try {
-        //     const { data } = await axios.get(`http://localhost:5000/microHauler/${singleCounty.name}/${singleCounty.state}`);
-        //     setMicroHaulers(data);
-        //   } catch (err) {
-        //     setError('Error fetching data');
-        //     console.log(error);
-        //   }
-        // } else {
-        //   setError('invalid address');
-        try {
-          const { data: microhaulers, error } = await supabase
-            .from('Microhauler')
-            .select('*')
-            .match({
-              'county': singleCounty.name,
-              'state': singleCounty.state
-            })
-          setMicroHaulers(microhaulers)
-        } catch (error) {
-          console.log(error);
-        }
+          try {
+            const { data } = await axios.get(`http://localhost:5000/microHauler/${singleCounty.name}/${singleCounty.state}`);
+            setMicroHaulers(data);
+          } catch (err) {
+            setError('Error fetching data');
+            console.log(error);
+          }
+        } else {
+          setError('invalid address');
+        
       }
     };
     fetchMicroHaulerByCounty();
