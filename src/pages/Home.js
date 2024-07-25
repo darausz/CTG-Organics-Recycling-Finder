@@ -8,7 +8,7 @@ export default function Home() {
     <div className='home-page'>
       <header className="home-page-header header">
         <h1 className="home-page-header-heading">
-          FINDING COMPOSTING SOLUTIONS
+          FIND COMPOSTING SOLUTIONS
         </h1>
         <p className="home-page-header-description">
           We provide a user-friendly online platform that simplifies the search for local composting solutions, making it easier to recycle food waste efficiently.
