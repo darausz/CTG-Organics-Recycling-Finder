@@ -13,9 +13,13 @@ export default function DistrictInfoTable() {
 
 
   useEffect(() => {
+    console.log("dropOffs ",dropOffs);
+    console.log("microHaulers ",microHaulers);
+    console.log("smartBins ",smartBins );
+  
     const services = Array(4).fill("no");
     if (singleCounty !== null) {
-      if (singleCounty.pickUp == "Yes") {
+      if (singleCounty.pickUp !== "No" && singleCounty.pickUp !==  "no") {
         services[0] = "yes";
       }                               
       if (dropOffs.length !== 0) {

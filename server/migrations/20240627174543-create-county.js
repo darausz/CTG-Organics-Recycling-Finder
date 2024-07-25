@@ -18,10 +18,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       comLaw:{
-        type:Sequelize.BOOLEAN
+        type:Sequelize.STRING
       },
       resLaw:{
-        type:Sequelize.BOOLEAN
+        type:Sequelize.STRING
       },
       //start of daraus code
       city:{

@@ -27,10 +27,10 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
     },
     comLaw:{
-        type: DataTypes.BOOLEAN
+        type: DataTypes.STRING
     },
     resLaw:{
-        type: DataTypes.BOOLEAN
+        type: DataTypes.STRING
     },
     //start of daraus code
     city:{
