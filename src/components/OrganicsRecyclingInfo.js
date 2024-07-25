@@ -47,21 +47,35 @@ export default function OrganicsRecyclingInfo({ address }) {
           {address}
         </div>
         <div className="OrganicsRecyclingInfo-Description">
-        {!(singleCounty.comLaw && singleCounty.resLaw) ? "There are no recycling laws in your area" : ""}
-      {singleCounty.resLaw !== null ? (
-    <div>
-      Residential recycling laws:  <a href={`${singleCounty.resLaw}`}>
-        {singleCounty.resLaw}
-      </a>
-    </div>
-         ) : ""}
-     {singleCounty.comLaw !== null ? (
-      <div>
-      Commercial recycling laws:  <a href={`${singleCounty.comLaw}`}>
-        {singleCounty.comLaw}
-      </a>
-    </div>
-       ) : ""}
+          {(singleCounty.comLaw === "no" && singleCounty.resLaw === "no") ? "There are no recycling laws in your area"
+            : !(singleCounty.comLaw === "no" && singleCounty.resLaw === "no") ?
+              <div>There are
+                <a className="OrganicsRecyclingInfo-DescriptionLink" href={`${singleCounty.resLaw}`} target="_blank">
+                  &nbsp;residential&nbsp;
+                </a>
+                and
+                <a className="OrganicsRecyclingInfo-DescriptionLink" href={`${singleCounty.comLaw}`} target="_blank">
+                  &nbsp;commercial&nbsp;
+                </a>
+                composting laws in your area
+              </div>
+              : (singleCounty.comLaw) ?
+                <div>
+                  There are
+                  <a className="OrganicsRecyclingInfo-DescriptionLink" href={`${singleCounty.comLaw}`} target="_blank">
+                    &nbsp;commercial&nbsp;
+                  </a>
+                  composting laws in your area
+                </div>
+                : (singleCounty.resLaw) ?
+                  <div>
+                    There are
+                    <a className="OrganicsRecyclingInfo-DescriptionLink" href={`${singleCounty.comLaw}`} target="_blank">
+                      &nbsp;residential&nbsp;
+                    </a>
+                    composting laws in your area
+                  </div>
+                  : ""}
         </div>
       </div>
       <div className="OrganicsRecyclingInfo-Section">

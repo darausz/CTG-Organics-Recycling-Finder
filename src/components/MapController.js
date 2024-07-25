@@ -1,4 +1,5 @@
 import { Marker, useMap, Popup } from 'react-leaflet';
+
 import { useCountyContext } from './countyProvider';
 import { useDropOffContext } from './dropOffProvider';
 import { useSmartBinContext } from './smartBinsProvider';
@@ -6,6 +7,7 @@ import MapLocationMarker from './MapLocationMarker';
 import { dropOffIcon } from './MapAssets';
 import { smartBinIcon } from './MapAssets';
 import { click } from '@testing-library/user-event/dist/click';
+import { useEffect } from 'react';
 
 export default function MapController() {
   const { setSelectedLocation } = useCountyContext();
@@ -14,7 +16,11 @@ export default function MapController() {
   const testAddress = "30-11 30th Dr, Queens, NY 11102";
   const map = useMap();
 
+  // useEffect(() => {
+  //   console.log("load");
+  // }, [smartBins, dropOffs])
   return (
+
     <>
       <MapLocationMarker /> 
          {dropOffs.map((dropOff, index) => {
@@ -23,7 +29,7 @@ export default function MapController() {
         <Marker
           key={index}
           index={index}
-          position={[dropOff.longitude, dropOff.latitude]}
+          position={[dropOff.latitude, dropOff.longitude]}
           icon={dropOffIcon}
           eventHandlers={{click: () => setSelectedLocation(dropOffs[index])}}
         >
@@ -34,7 +40,7 @@ export default function MapController() {
         <Marker
           key={index}
           index={index}
-          position={[smartBin.longitude,smartBin.latitude]}
+          position={[smartBin.latitude, smartBin.longitude]}
           icon={smartBinIcon}
           eventHandlers={{click: () => setSelectedLocation(smartBins[index])}}
         >

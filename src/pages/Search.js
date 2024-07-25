@@ -59,7 +59,7 @@ export default function Search() {
                 Strong Policy
               </div>
             </div>
-            <div className='search-policy grow'>
+            <div className='search-policy'>
               <img className='search-policy-color' src={moderatePolicyIcon} />
               <div className='search-policy-category'>
                 Moderate Policy
@@ -71,7 +71,7 @@ export default function Search() {
                 Weak Policy
               </div>
             </div>
-            <div className='search-policy  grow'>
+            <div className='search-policy'>
               <img className='search-policy-color' src={noPolicyIcon} />
               <div className='search-policy-category'>
                 No Policy
