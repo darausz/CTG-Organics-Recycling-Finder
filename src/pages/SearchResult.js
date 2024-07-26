@@ -206,7 +206,7 @@ export default function SearchResult() {
       </div>
       <div className='organics-recycling-info-container'>
         <button onClick={(e) => { setAddress("") }}>
-          <Link className='back-button' to="/search"></Link>
+          <Link className='back-button' to="/search">&nbsp;&nbsp;&nbsp;Back to Search</Link>
         </button>
         <OrganicsRecyclingInfo address={address} />
       </div>

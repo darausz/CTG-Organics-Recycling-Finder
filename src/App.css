@@ -230,18 +230,18 @@ body {
 
 .back-button {
   display: block;
-  background-image: url("./assets/backIcon.png");
-  background-size: 1.3rem 1.3rem;
+  background-image: url("./assets/backArrow.png");
+  background-size: 1rem 1rem;
   background-repeat: no-repeat;
-  background-position: center center;
-  filter: invert(100%);
+  background-position: 1rem center;
   margin-top: 4rem;
-  width:3rem;
-  height:3rem;
+  width: 12rem;
+  height: 3rem;
   border: 1px solid black;
   border-radius: 2rem;
+  background-color: var(--green);
+  line-height: 3rem;
 }
-
 
 /* Map */
 
@@ -493,42 +493,6 @@ td {
     height: 30rem;
   }
 
-  .search-address-field {
-    width: 20rem;
-  }
-
-  .search-container {
-    margin-top: 0;
-    padding: 0 5%;
-    width: 100%;
-    align-self: start;
-  }
-
-  .search-legend {
-    margin-bottom: 2rem;
-  }
-  .search-policy {
-    width: 50%;
-  }
-
-  .search-result-page {
-    flex-direction: column;
-    max-width: 100vw;
-  }
-
-  .state-infographic-container {
-    width: 100%;
-    height: 100%;
-  }
-  .state-infographic-header {
-    margin: 1rem;
-    padding-left: 1rem;
-  }
-
-  .state-infographic-body {
-    margin: 2rem;
-  }
-
   .Map-Country {
     height: 30vh;
     margin: 1rem;
@@ -553,6 +517,43 @@ td {
     gap: 1rem;
   }
 
+  .search-address-field {
+    width: 20rem;
+  }
+
+  .search-container {
+    margin-top: 0;
+    padding: 0 5%;
+    width: 100%;
+    align-self: start;
+  }
+
+  .search-legend {
+    margin-bottom: 2rem;
+  }
+
+  .search-policy {
+    width: 50%;
+  }
+
+  .search-result-page {
+    flex-direction: column;
+    max-width: 100vw;
+  }
+
+  .state-infographic-container {
+    width: 100%;
+    height: 100%;
+  }
+  .state-infographic-header {
+    margin: 1rem;
+    padding-left: 1rem;
+  }
+
+  .state-infographic-body {
+    margin: 2rem;
+  }
+
   .organics-recycling-info-container {
     margin: 2rem;
     width: auto;
@@ -563,4 +564,7 @@ td {
     max-width: 80%;
   }
  
+  .back-button {
+    margin:0;
+  }
 }
