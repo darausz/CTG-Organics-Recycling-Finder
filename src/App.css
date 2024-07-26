@@ -6,6 +6,12 @@
   src: url("../public/BryantPro-Medium.woff") format("woff");
 }
 
+:root {
+  --green:#00c068;
+  --greenOnHover: #00d171;
+  --greenOnClick: #02a65b;
+}
+
 body {
   background-color: #292a3c;
   color:white;
@@ -32,8 +38,8 @@ body {
 .leaflet-container {
   height: 100%;
 }
-/* Home */
 
+/* Home */
 .home-page {
   display:flex;
   flex-direction: column;
@@ -84,17 +90,21 @@ body {
 }
 
 .start-button {
-  background-color: #00c068;
+  background-color: var(--green);
   border-radius: 3rem;
   width: 22rem;
   height: 3.5rem;
   margin: auto;
 }
 
+.navigate-button:hover {
+  background-color: var(--greenOnHover);
+}
+
+.navigate-button:active {
+  background-color: var(--greenOnClick);
+}
 /* Search */
-
-
-
 .search-page {
   display:flex;
   gap:6rem;
@@ -146,9 +156,14 @@ body {
   padding-left: 1rem;
 }
 
+.search-address-field:focus {
+  outline: none;
+  border: 1px solid var(--green);
+}
+
 .search-button {
   margin-top: 1rem;
-  background-color: #00c068;
+  background-color: var(--green);
   width: 8rem;
   height: 3rem;
   border-radius: 3rem;
@@ -304,7 +319,7 @@ td {
   width: 1rem;
   min-width: 1rem;
   min-height: 1rem;
-  background-color: green;
+  background-color: var(--green);
   border-radius: .5rem;
   border: 3px solid white;
 }
@@ -378,6 +393,31 @@ td {
   color:lightgray;
 }
 
+.OrganicsRecyclingInfo-Microhauler-Description div:not(:first-child) {
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.OrganicsRecyclingInfo-DescriptionName {
+  color:white;
+  padding-top: 1rem;
+  font-size: 1.4rem;
+}
+
+.OrganicsRecyclingInfo-DescriptionLabel {
+  color:rgb(230, 230, 230);
+}
+.OrganicsRecyclingInfo-DescriptionLink {
+  color: var(--green);
+}
+
+.OrganicsRecyclingInfo-DescriptionLink:hover {
+  color:var(--greenOnHover);
+}
+
+.OrganicsRecyclingInfo-DescriptionLink:active {
+  color:var(--greenOnClick);
+}
+
 /* FourPillarsDescription */
 
 .FourPillars-Section {
@@ -396,6 +436,7 @@ td {
 
 .FourPillars-SectionHeading {
   font-size: 1.4rem;
+  color:white;
 }
 
 .FourPillars-Image {

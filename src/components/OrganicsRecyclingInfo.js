@@ -87,9 +87,15 @@ export default function OrganicsRecyclingInfo({ address }) {
           <button name="facility" className={shownItem === "facility" ? "collapse-button" : "expand-button"} onClick={expand}>
           </button>
         </div>
-        <div className="OrganicsRecyclingInfo-Description">
-          {shownItem == "facility" ? <>{microHaulers.map((microHauler) => (
-            <p key={microHauler.id}> {microHauler.name}, {microHauler.phoneNum}</p>
+        <div className="OrganicsRecyclingInfo-Description OrganicsRecyclingInfo-Microhauler-Description">
+          {shownItem == "facility" ? <>{microHaulers.map((microhauler) => (
+            <div key={microhauler.id}> 
+              <p className="OrganicsRecyclingInfo-DescriptionName">{microhauler.name}</p>
+                <p>{microhauler.address ? <div><span className="OrganicsRecyclingInfo-DescriptionLabel">Address: </span>{microhauler.address}</div> : ""}</p>
+                <p>{microhauler.website ? <div><span className="OrganicsRecyclingInfo-DescriptionLabel">Website: </span>{microhauler.website}</div> : ""}</p>
+                <p>{microhauler.email ? <div><span className="OrganicsRecyclingInfo-DescriptionLabel">Email: </span>{microhauler.email}</div> : ""}</p>
+                <p>{microhauler.phoneNum ? <div><span className="OrganicsRecyclingInfo-DescriptionLabel">Phone Number: </span>{microhauler.phoneNum}</div> : ""}</p>
+            </div>
           ))}</> : ""}
         </div>
       </div>
@@ -106,13 +112,13 @@ export default function OrganicsRecyclingInfo({ address }) {
           {shownItem == "solution" ?
             (selectedLocation !== null ?
               (<>
-                <p>{selectedLocation.name}</p>
-                <p>{selectedLocation.address ? `Address: ${selectedLocation.address}` : ""}</p>
-                <p>{selectedLocation.website ? `Website: ${selectedLocation.website}` : ""}</p>
-                <p>{selectedLocation.email ? `Email: ${selectedLocation.email}` : ""}</p>
-                <p>{selectedLocation.phoneNum ? `Phone Number: ${selectedLocation.phoneNum}` : ""}</p>
-                <p>{selectedLocation.monthOpen ? `Months Open: ${selectedLocation.monthOpen}` : ""}</p>
-                <p>{selectedLocation.timeOpen ? `Time Open: ${selectedLocation.timeOpen}` : ""}</p>
+                <p className="OrganicsRecyclingInfo-DescriptionName">{selectedLocation.name}</p>
+                <p>{selectedLocation.address ? <div><span className="OrganicsRecyclingInfo-DescriptionLabel">Address: </span>{selectedLocation.address}</div> : ""}</p>
+                <p>{selectedLocation.website ? <div><span className="OrganicsRecyclingInfo-DescriptionLabel">Website: </span>Website: {selectedLocation.website}</div> : ""}</p>
+                <p>{selectedLocation.email ? <div><span className="OrganicsRecyclingInfo-DescriptionLabel">Email: </span>{selectedLocation.email}</div> : ""}</p>
+                <p>{selectedLocation.phoneNum ? <div><span className="OrganicsRecyclingInfo-DescriptionLabel">Phone Number: </span>{selectedLocation.phoneNum}</div> : ""}</p>
+                <p>{selectedLocation.monthOpen ? <div><span className="OrganicsRecyclingInfo-DescriptionLabel">Months Open: </span>{selectedLocation.monthOpen}</div> : ""}</p>
+                <p>{selectedLocation.timeOpen ? <div><span className="OrganicsRecyclingInfo-DescriptionLabel">Hours Open: </span>{selectedLocation.timeOpen}</div> : ""}</p>
               </>)
               :
               "No location selected")

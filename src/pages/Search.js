@@ -25,7 +25,7 @@ export default function Search() {
       <div className="country-container">
         <header className="country-header header">
           <h1 className="bold">
-            FIND COMPOSTING SOLUTIONS
+            COMPOST SOLUTIONS FINDER
           </h1>
         </header>
         <Map mapType="country" />
@@ -33,10 +33,10 @@ export default function Search() {
       <div className='search-container'>
         <div className="search-header">
           <h3 className="search-heading">
-            Find Organic Recycling Information
+          Find Composting Solutions Near You
           </h3>
           <p className="search-description">
-            Enter information to search services in your area.
+          Enter information for services in your area.
           </p>
         </div>
         <div className='search-address-container'>
@@ -44,7 +44,7 @@ export default function Search() {
             Address (Required)
           </h4>
           <input className="search-address-field" type="text" value={input} onChange={e => setInput(e.target.value)}></input>
-          <button className='search-button'>
+          <button className='search-button navigate-button'>
             <Link to="/search/result" onClick={handleClick}>
               Search
             </Link>

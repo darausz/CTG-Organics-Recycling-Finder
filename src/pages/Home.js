@@ -43,7 +43,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <button className="start-button">
+      <button className="start-button navigate-button">
         <Link to="/search">
           Start Your Sustainability Journey
         </Link>
