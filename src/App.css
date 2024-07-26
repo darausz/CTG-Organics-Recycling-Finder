@@ -391,6 +391,8 @@ td {
 
 .OrganicsRecyclingInfo-Description {
   color:lightgray;
+  width: auto;
+  white-space: normal;
 }
 
 .OrganicsRecyclingInfo-Microhauler-Description div:not(:first-child) {
@@ -408,6 +410,7 @@ td {
 }
 .OrganicsRecyclingInfo-DescriptionLink {
   color: var(--green);
+  display: inline-block;
 }
 
 .OrganicsRecyclingInfo-DescriptionLink:hover {

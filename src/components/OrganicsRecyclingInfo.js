@@ -49,9 +49,7 @@ export default function OrganicsRecyclingInfo({ address }) {
         <div className="OrganicsRecyclingInfo-Description">
           {(singleCounty.comLaw === "no" && singleCounty.resLaw === "no") ? "There are no recycling laws in your area"
             : !(singleCounty.comLaw === "no" && singleCounty.resLaw === "no") ?
-              <div>There are
-                <a className="OrganicsRecyclingInfo-DescriptionLink" href={`${singleCounty.resLaw}`} target="_blank">
-                  &nbsp;residential&nbsp;
+              <div>There are<a className="OrganicsRecyclingInfo-DescriptionLink" href={`${singleCounty.resLaw}`} target="_blank"> &nbsp;residential&nbsp;
                 </a>
                 and
                 <a className="OrganicsRecyclingInfo-DescriptionLink" href={`${singleCounty.comLaw}`} target="_blank">
