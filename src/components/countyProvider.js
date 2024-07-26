@@ -3,8 +3,13 @@ import React, { useState, useContext, createContext,useEffect } from "react";
 const CountyContext= createContext();
 
 export function CountyProvider({children}){
+/*   const[counties,setCounty]= useState([]);
+  const[singleCounty, setSingleCounty]= useState({});
+  const[address, setAddress]= useState('');
+  const[coordinates, setCoordinates] = useState([]);
+  const[selectedLocation, setSelectedLocation] = useState({}); */
 
-  const storedSingleCounty=localStorage.getItem('singleCounty');
+   const storedSingleCounty=localStorage.getItem('singleCounty');
    let parsedSingleCounty;
   
    if (storedSingleCounty) {
@@ -34,7 +39,7 @@ export function CountyProvider({children}){
       localStorage.setItem('coordinates',JSON.stringify(coordinates))
     }, [coordinates]) 
    
-    
+     
     
 
 
