@@ -94,6 +94,7 @@ body {
   width: 22rem;
   height: 3.5rem;
   margin: auto;
+  margin-bottom: 4rem;
 }
 
 .navigate-button:hover {
