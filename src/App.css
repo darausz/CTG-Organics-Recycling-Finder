@@ -167,6 +167,15 @@ body {
   border-radius: 3rem;
 }
 
+.search-button:hover {
+  background-color: var(--greenOnHover);
+}
+
+.search-button:active {
+  background-color: var(--greenOnClick);
+}
+
+
 .search-legend {
   padding-top: 1rem;
   border-top: 1px solid rgba(255,255,255,.25);
@@ -238,6 +247,14 @@ body {
   border-radius: 2rem;
   background-color: var(--green);
   line-height: 3rem;
+}
+
+.back-button:hover {
+  background-color: var(--greenOnHover);
+}
+
+.back-button:active {
+  background-color: var(--greenOnClick);
 }
 
 /* Map */
