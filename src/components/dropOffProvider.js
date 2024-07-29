@@ -1,14 +1,24 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useContext, createContext,useEffect } from "react";
 
 const DropOffContext= createContext();
 
 export function DropoffProvider({children}){
+    const storedDropOffs=localStorage.getItem('dropOffs');
+    let parsedDropOffs;
+    if(storedDropOffs){
+      parsedDropOffs= JSON.parse(storedDropOffs);
+    }else{
+      parsedDropOffs= [];
+    }
 
-    const [dropOffs, setDropOffs] = useState([]);
-    const [singleDropOff,setSingleDropOff]= useState({});
+    const [dropOffs, setDropOffs] = useState(parsedDropOffs);
+    
+    useEffect(()=>{
+        localStorage.setItem('dropOffs',JSON.stringify(dropOffs))
+      },[dropOffs])
 
     return (
-        <DropOffContext.Provider value={{dropOffs,setDropOffs,singleDropOff,setDropOffs}}>
+        <DropOffContext.Provider value={{dropOffs,setDropOffs}}>
             {children} 
         </DropOffContext.Provider>
     );
