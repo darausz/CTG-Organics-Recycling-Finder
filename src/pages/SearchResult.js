@@ -11,7 +11,13 @@ import { useSmartBinContext } from '../components/smartBinsProvider.js';
 import supabase from "../config/supabase.js";
 
 export default function SearchResult() {
-  const [county, setCounty] = useState(null);
+
+  const { address, setAddress, singleCounty, setSingleCounty, setCoordinates } = useCountyContext();
+  const { setDropOffs,dropOffs } = useDropOffContext();
+  const { setMicroHaulers,microHaulers } = useMicroHaulerContext();
+  const { setSmartBins,smartBins } = useSmartBinContext();
+
+  /* const [county, setCounty] = useState(null);
   const [state, setState] = useState(null);
   const { address, setAddress, singleCounty, setSingleCounty, setCoordinates } = useCountyContext();
   const { setDropOffs } = useDropOffContext();
@@ -190,7 +196,7 @@ export default function SearchResult() {
     };
     fetchMicroHaulerByCounty();
   }, [singleCounty, setMicroHaulers, setError])
-
+ */
   return (
     <div className='search-result-page'>
       <div className="state-infographic-container">
@@ -205,7 +211,14 @@ export default function SearchResult() {
         </div>
       </div>
       <div className='organics-recycling-info-container'>
-        <button onClick={(e) => { setAddress("") }}>
+        <button onClick={(e) => { 
+          setAddress("");
+          setSingleCounty({});
+          setSmartBins([]);
+          setMicroHaulers([]);
+          setDropOffs([]);
+          setCoordinates([]);
+           }}>
           <Link className='back-button' to="/search">&nbsp;&nbsp;&nbsp;Back to Search</Link>
         </button>
         <OrganicsRecyclingInfo address={address} />
