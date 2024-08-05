@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         id: 4,
-        name: 'The Bronx',
+        name: 'Bronx',
         city: "New York City",
         state: "New York",
      

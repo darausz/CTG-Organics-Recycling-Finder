@@ -25,16 +25,19 @@ export default function OrganicsRecyclingInfo({ address }) {
 
   function expand(event) {
     if (shownItem == event.target.name) {
+      console.log("shownItem",shownItem);
       setShownItem("");
     }
     else {
+      console.log("In the else statement",event.target.name);
       setShownItem(event.target.name);
     }
   }
-
+// everytime a user clicks a marker on the map::
+//wheather it be a smartBin or dropoff -> setShownItem("solution");
   useEffect(() => {
     if (Object.keys(selectedLocation).length !== 0) {
-      console.log(selectedLocation)
+      console.log("selectedLocation",selectedLocation)
       setShownItem("solution");
     }
   }, [selectedLocation])
@@ -100,7 +103,7 @@ export default function OrganicsRecyclingInfo({ address }) {
             Select a Composting Solution Near You
           </h3>
           <button name="solution" className={shownItem === "solution" ? "collapse-button" : "expand-button"} onClick={expand}>
-          </button>
+          </button> 
         </div>
         <div className="OrganicsRecyclingInfo-Description">
           {shownItem == "solution" ?

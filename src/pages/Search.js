@@ -32,8 +32,21 @@ export default function Search() {
   const handleSubmit = () => {
     setAddress(input);
   }
+  useEffect(() => {
+    // Reset coordinates when the component mounts
+    setCoordinates([40.7, -74]);
+  }, [setCoordinates]); 
+  
 
     useEffect(() => {
+      function translateSpecialCase(state, county) {
+        if (state === "New York" && county === "Kings") {
+          return("Brooklyn");
+        }
+        if (state === "New York" && county === "The Bronx") {
+          return("Bronx");
+        }
+      }
       const fetchCoordinates = async () => {
         if (address) {
           try {
@@ -41,21 +54,17 @@ export default function Search() {
             const reversed = address.split(" ").reverse().join(" "); //reversed to search larger regions first because nominatim searches left to right
             const { data: [lookup] } = await axios.get(`https://nominatim.openstreetmap.org/search?q=${address}&format=json`);
             console.log("loopUp",lookup);
-          
-           
             const coords = [parseFloat(lookup.lat), parseFloat(lookup.lon)];
             const location = lookup.display_name.split(", ");
-  
             if (isNaN(parseInt(location.at(-2)))) { //check if there is a zipcode
               setState(location.at(-2));
-              setCounty(location.at(-3).replace(/ County$/, ''));
+              setCounty(translateSpecialCase(location.at(-2),location.at(-3).replace(/ County$/, '')));
             }
             else {
               setState(location.at(-3));
-              setCounty(location.at(-4).replace(/ County$/, ''));
+              setCounty(translateSpecialCase(location.at(-3),location.at(-4).replace(/ County$/, '')));
             }
             setCoordinates(coords);
-  
           } catch (error) {
             setError('Error fetching coordinates');
             console.log(error);
@@ -65,15 +74,7 @@ export default function Search() {
           setError('Invalid address');
         }
       }
-  
-      function translateSpecialCase() {
-        if (state === "New York" && county === "Kings") {
-          setCounty("Brooklyn");
-        }
-      }
-  
       fetchCoordinates();
-      translateSpecialCase();
     },[address,setState,setCounty,setCoordinates]);
   
     useEffect(() => {
@@ -81,6 +82,7 @@ export default function Search() {
         if (county !== null && state !== null) {
             try {
               const { data } = await axios.get(`http://localhost:5000/county/${county}/${state}`);
+              console.log("fetchCountyData: ",data);
               setSingleCounty(data);
               
             } catch (error) {
@@ -111,7 +113,7 @@ export default function Search() {
               setMicroHaulers(queryMicroHaulers);
               setSmartBins(querySmartBins);
             
-              console.log("Step 4pillars: ",step, queryDropOffs,queryMicroHaulers,queryMicroHaulers);
+              console.log("Step 4pillars: ",step, queryDropOffs,queryMicroHaulers,querySmartBins);
               console.log("fetching DropOffs",queryDropOffs);
               setStep(3);
              
