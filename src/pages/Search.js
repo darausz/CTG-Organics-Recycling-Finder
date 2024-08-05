@@ -36,6 +36,15 @@ export default function Search() {
   }, [setCoordinates]); 
   
   useEffect(() => {
+    function translateSpecialCase(state, county) {
+      if (state === "New York" && county === "Kings") {
+        return("Brooklyn");
+      }
+      if (state === "New York" && county === "The Bronx") {
+        return("Bronx");
+      }
+    }
+
     const fetchCoordinates = async () => {
       if (address) {
         try {
@@ -50,11 +59,11 @@ export default function Search() {
 
           if (isNaN(parseInt(location.at(-2)))) { //check if there is a zipcode
             setState(location.at(-2));
-            setCounty(location.at(-3).replace(/ County$/, ''));
+            setCounty(translateSpecialCase(location.at(-2),location.at(-3).replace(/ County$/, '')));
           }
           else {
             setState(location.at(-3));
-            setCounty(location.at(-4).replace(/ County$/, ''));
+            setCounty(translateSpecialCase(location.at(-3),location.at(-4).replace(/ County$/, '')));
           }
           setCoordinates(coords);
 
@@ -65,12 +74,6 @@ export default function Search() {
       }
       else {
         setError('Invalid address');
-      }
-    }
-
-    function translateSpecialCase() {
-      if (state === "New York" && county === "Kings") {
-        setCounty("Brooklyn");
       }
     }
 
