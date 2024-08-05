@@ -78,7 +78,6 @@ export default function Search() {
     }
 
     fetchCoordinates();
-    translateSpecialCase();
   },[address,setState,setCounty,setCoordinates]);
 
   useEffect(() => {
