@@ -46,6 +46,7 @@ export default function Search() {
         if (state === "New York" && county === "The Bronx") {
           return("Bronx");
         }
+        return(county);
       }
       const fetchCoordinates = async () => {
         if (address) {
