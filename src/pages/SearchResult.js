@@ -171,9 +171,9 @@ export default function SearchResult() {
           setDropOffs([]);
           setCoordinates([]);
           
-          }}>
-          <Link className='back-button' to="/search"></Link>
-        </button>
+          }} >
+          <Link className='back-button' to="/search">&nbsp;&nbsp;&nbsp;Back to Search</Link>
+            </button>
         <OrganicsRecyclingInfo address={address} />
       </div>
     </div>
