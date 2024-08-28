@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useCountyContext } from "./countyProvider";
 import { CountyProvider } from "./countyProvider";
 import { useDropOffContext } from "./dropOffProvider";
-import { useMicroHaulerContext } from "./microHaulerProvider";
+import { useMicroHaulerContext } from "./microhaulerProvider";
 import FourPillarsDescription from "./FourPillarsDescription";
 const zipToCountyId = {
   "10458": 4,

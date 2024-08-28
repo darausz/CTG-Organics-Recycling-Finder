@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDropOffContext } from "./dropOffProvider";
-import { useMicroHaulerContext } from "./microHaulerProvider";
+import { useMicroHaulerContext } from "./microhaulerProvider.js";
 import { useSmartBinContext } from './smartBinsProvider.js';
 import { useCountyContext } from './countyProvider.js';
 
